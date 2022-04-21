@@ -35,6 +35,7 @@ file close git
 * RUN TO PUSH CHANGES TO GITHUB:
 file close _all
 file open git using mygit.bat, write replace
+file write git "git pull"
 file write git "git add --all" _n
 file write git "git commit -m "
 file write git `"""' "new change, now testing gitignore" `"""' _n
