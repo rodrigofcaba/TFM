@@ -1,3 +1,3 @@
 git add --all
-git commit -m "testing, minor change"
+git commit -m "new change, now testing gitignore"
 git push

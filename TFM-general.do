@@ -16,7 +16,12 @@ cd "C:\Users\Rodrigo\Desktop\TFM\Data"
 ! git remote add origin https://github.com/rodrigofcaba/TFM.git
 ! git push -u origin master
 
+
 file close _all
+file open gitignore using .gitignore, write replace
+file write gitignore "*.bat" _n
+file close gitignore
+
 file open git using mygit.bat, write replace
 file write git "git remote add origin " `"""' "https://github.com/rodrigofcaba/TFM.git" `"""' _n
 file write git "git add --all" _n
@@ -32,14 +37,12 @@ file close _all
 file open git using mygit.bat, write replace
 file write git "git add --all" _n
 file write git "git commit -m "
-file write git `"""' "testing, minor change" `"""' _n
+file write git `"""' "new change, now testing gitignore" `"""' _n
 file write git "git push" _n
 file close git
 
 ! mygit.bat
 
-
-* Cambio en el dofile
 
 use E-DEM-Waves-Dataset, clear
 
