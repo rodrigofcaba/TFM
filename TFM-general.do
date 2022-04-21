@@ -25,6 +25,22 @@ file write git `"""' "initial commit" `"""' _n
 file write git "git push" _n
 file close git
 
+! mygit.bat
+
+* RUN TO PUSH CHANGES TO GITHUB:
+file close _all
+file open git using mygit.bat, write replace
+file write git "git add --all" _n
+file write git "git commit -m "
+file write git `"""' "testing, minor change" `"""' _n
+file write git "git push" _n
+file close git
+
+! mygit.bat
+
+
+* Cambio en el dofile
+
 use E-DEM-Waves-Dataset, clear
 
 tab p37a_2 //Spanish economic situation
