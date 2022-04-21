@@ -16,8 +16,15 @@ foreach x of local stubs{
 local y_vars `y_vars' `x'_
 }
 
-reshape long "`y_vars'" p4g_ p7l_ p9l_ p11q_ p11r_ p11s_ p13k_ p14h_ p37a_ p72a_ p72b_ p72c_ p72e_ p72l_ p72f_  p37b_ p38a_ p74a_ p74b_ p4h_ p10i_ p80_, i(g1a_0) j(wave)
+reshape long "`y_vars'" ///
+p4g_ p4h_ p10i_ p7l_ p9l_ p11q_ p11r_ p14h_ ///
+p37a_ p37b_ p38a_ ///
+p72a_ p72b_ p72c_ p72e_ p72l_ p72f_ ///
+p75_ ///
+p74a_ p74b_ p74c_ p74e_ p74l_ p74f_ , ///
+i(g1a_0) j(wave)
 
+rename g1a_0 id
 rename p37a_ spanish_econ_assessment
 rename p37b_ household_econ_assessment
 rename p72a_ pp_like
@@ -26,8 +33,20 @@ rename p72c_ up_like
 rename p72e_ cs_like
 rename p72l_ vox_like
 rename p72f_ erc_like
+rename p75_ vote_intention
+rename p74a_ prob_vote_pp
+rename p74b_ prob_vote_psoe
+rename p74c_ prob_vote_up
+rename p74e_ prob_vote_cs
+rename p74l_ prob_vote_vox
+rename p74f_ prob_vote_erc
 
 drop p??_? p???_? p????_? p?????_? trust* g?_0
+
+gen vote_incumbent = .
+recode vote_incumbent . = 1 if vote_intention == 1 | vote_intention == 4
+recode vote_incumbent . = 0 
+la var vote_incumbent "Intention to vote for the incumbent"
 
 * Parties share per wave:
 foreach x in pp psoe up cs vox erc {
@@ -71,11 +90,6 @@ gen AP_index = sqrt(pp_pol + psoe_pol + up_pol + cs_pol + vox_pol + erc_pol)
 * p74 (probability of voting): only waves 3 and 4.
 * cannot know probability of voting the incumbent before moción de censura.
 * p38 (satisfaction with government): only waves 2 and 3.
-
-gen vote_incumbent = .
-recode vote_incumbent . = 1 if p80_ == 1 | p80_ == 4
-recode vote_incumbent . = 0 
-la var vote_incumbent "Intention to vote for the incumbent"
 
 recode spanish_econ_assessment (1 2 = 1 "Worse") (4 5 = 2 "Better") (3 = .), into(spanish_econ_assessment_dummy)
 la var spanish_econ_assessment_dummy "Assessment of the economic situation of the country"
