@@ -6,8 +6,6 @@
 clear all
 set more off
 
-* CAMBIO EVIDENTE
-
 cd "C:\Users\Rodrigo\Desktop\TFM\Data"
 
 use E-DEM-Waves-Dataset, clear
