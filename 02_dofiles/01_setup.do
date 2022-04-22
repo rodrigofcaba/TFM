@@ -16,15 +16,34 @@ foreach x of local stubs{
 local y_vars `y_vars' `x'_
 }
 
-reshape long "`y_vars'" ///
-p4g_ p4h_ p10i_ p7l_ p9l_ p11q_ p11r_ p14h_ ///
+reshape long  ///
+s0_ s1_ s2_ s2R_ s3a_ s4a_ s8_ /// //sociodemografic vars
+p4a_ p4b_ p4c_ p4d_ p4e_ p4f_ p4g_ p4h_ ///
+p11f_ p11g_ p11h_ p11i_ p11r_ /// //feelings towards party voters
+p7l_ p9l_ p14h_ ///
+p35a_ /// //party id
 p37a_ p37b_ p38a_ ///
 p72a_ p72b_ p72c_ p72e_ p72l_ p72f_ ///
 p75_ ///
 p74a_ p74b_ p74c_ p74e_ p74l_ p74f_ , ///
 i(g1a_0) j(wave)
 
+
 rename g1a_0 id
+rename p4a_ unemployment_sit
+rename p4b_ education_sit
+rename p4c_ health_sit
+rename p4d_ immigration_sit
+rename p4e_ pensions_sit
+rename p4f_ corruption_sit
+rename p4g_ viol_wom_sit
+rename p4h_ catalonia_sit
+rename p11f_ feel_pp_voters
+rename p11g_ feel_psoe_voters
+rename p11h_ feel_cs_voters
+rename p11i_ feel_up_voters
+rename p11r_ feel_vox_voters
+
 rename p37a_ spanish_econ_assessment
 rename p37b_ household_econ_assessment
 rename p72a_ pp_like
@@ -43,10 +62,14 @@ rename p74f_ prob_vote_erc
 
 drop p??_? p???_? p????_? p?????_? trust* g?_0
 
+*Party id recode:
+recode p35a_ (1 = 1 "PP") (2=2 "PSOE") (3 4 = 3 "UP + IU") (5 = 4 "Ciudadanos") (13 = 5 "VOX") (6/12 = .) , into(party_id)
+tab party_id
 gen vote_incumbent = .
 recode vote_incumbent . = 1 if vote_intention == 1 | vote_intention == 4
 recode vote_incumbent . = 0 
 la var vote_incumbent "Intention to vote for the incumbent"
+
 
 * Parties share per wave:
 foreach x in pp psoe up cs vox erc {
@@ -86,6 +109,15 @@ gen `x'_pol = `x'_share*(`x'_like-average_party_affect)^2
 
 * Respondent's affective polarization index:
 gen AP_index = sqrt(pp_pol + psoe_pol + up_pol + cs_pol + vox_pol + erc_pol)
+
+* AP dummy
+gen AP_index_dummy = .
+su AP_index
+recode AP_index_dummy . = 0 if AP_index < r(mean)
+recode AP_index_dummy . = 1 if AP_index >= r(mean)
+la def AP_index_dummy 0 "Bellow the Affective Polarization median" 1 "Above Affective Polarization the median"
+la val AP_index_dummy AP_index_dummy
+
 
 * p74 (probability of voting): only waves 3 and 4.
 * cannot know probability of voting the incumbent before moción de censura.
