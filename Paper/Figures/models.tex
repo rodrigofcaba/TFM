@@ -1,0 +1,29 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                & Baseline         &+ Sociodemografic controls         &+ Attitudinal controls         \\
+\midrule
+Intention to vote for the incumbent&                  &                  &                  \\
+Economic voting &    0.363\sym{*}  &    0.350\sym{*}  &    0.347\sym{*}  \\
+                &   (2.37)         &   (2.26)         &   (2.19)         \\
+AP index        &    0.455\sym{***}&    0.492\sym{***}&    0.483\sym{***}\\
+                &  (14.37)         &  (15.08)         &  (14.52)         \\
+Economic voting $\times$ AP index&  -0.0101         &  -0.0227         &  -0.0370         \\
+                &  (-0.30)         &  (-0.66)         &  (-1.05)         \\
+Sociodemografic controls&                  &      Yes         &      Yes         \\
+Region          &                  &  0.00271         &  0.00344         \\
+                &                  &   (0.34)         &   (0.43)         \\
+Attitudinal controls&                  &                  &      Yes         \\
+Unemployment situation&                  &                  &  -0.0391         \\
+                &                  &                  &  (-1.61)         \\
+Constant        &   -2.400\sym{***}&   -2.665\sym{***}&   -2.835\sym{***}\\
+                & (-17.34)         &  (-8.34)         &  (-8.39)         \\
+\midrule
+Pseudo \(R^{2}\)&    0.080         &    0.091         &    0.102         \\
+Observations    &     3622         &     3622         &     3607         \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}

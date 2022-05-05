@@ -26,7 +26,7 @@ file close _all
 file open git using mygit.bat, write replace
 file write git "git add --all" _n
 file write git "git commit -m "
-file write git `"""' "Some changes in reshape long" `"""' _n
+file write git `"""' "new graphs and variable recoding/labeling" `"""' _n
 file write git "git push" _n
 file close git
 ! mygit.bat
