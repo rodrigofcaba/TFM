@@ -4,14 +4,22 @@
 * Author: Rodrigo Fernández Caba
 ********************************************************************************
 
+*************
+* GIT PUSH: *
+*************
+
+cap do git_push.do ""
+
+********************************************************************************
 clear all
 set more off
 set scheme tufte, perm
 set autotabgraphs on, perm  
 
-global projectdir "C:/Users/Rodrigo/Desktop/TFM"
-global model 1
+* Set working directory to the root of the folder:
+cap global projectdir "your/path/to/TFM"
 
+global model 1
 cd $projectdir
 
 do Data/02_dofiles/01_setup.do $model
