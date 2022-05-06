@@ -1,6 +1,7 @@
 *.bat
 git_config.do
 git_push.do
+*.code-workspace
 ## Core latex/pdflatex auxiliary files:
 *.aux
 *.lof
