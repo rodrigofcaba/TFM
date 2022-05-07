@@ -35,6 +35,6 @@ cap net install grc1leg, from (http://www.stata.com/users/vwiggins)
 
 *Combined graphs
 
-grc1leg feel_pp_dif_by_party feel_psoe_dif_by_party feel_cs_dif_by_party feel_vox_dif_by_party, legendfrom(feel_pp_dif_by_party) name(combined_graph, replace) span
+grc1leg feel_psoe_dif_by_party feel_pp_dif_by_party  feel_up_dif_by_party feel_vox_dif_by_party feel_cs_dif_by_party, legendfrom(feel_pp_dif_by_party) name(combined_graph, replace) span rows(3)
 
 graph export Paper/Figures/combinedfeelingsAP.png, replace

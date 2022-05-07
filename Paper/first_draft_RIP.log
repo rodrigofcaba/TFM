@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.12)  6 MAY 2022 11:34
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (MiKTeX 21.6) (preloaded format=pdflatex 2021.6.12)  7 MAY 2022 12:03
 entering extended mode
 **c:/Users/Rodrigo/Desktop/TFM/Paper/first_draft_RIP.tex
 (c:/Users/Rodrigo/Desktop/TFM/Paper/first_draft_RIP.tex
@@ -689,53 +689,56 @@ Package pdftex.def Info: figure1.png  used on input line 68.
 (pdftex.def)             Requested size: 451.60913pt x 287.72298pt.
  [1
 
-{C:/Users/Rodrigo/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2 <./figure1.png>] [3] [4] [5] [6] [7] [8]
-<Figures/combinedfeelingsAP.png, id=303, 1281.78876pt x 932.48375pt>
+{C:/Users/Rodrigo/AppData/Local/MiKTeX/pdftex/config/pdftex.map}] [2 <./figure1.png>] [3] [4] [5] [6] [7] [8] [9] [10] [11]
+<Figures/combinedfeelingsAP.png, id=343, 1281.78876pt x 932.48375pt>
 File: Figures/combinedfeelingsAP.png Graphic file (type png)
 <use Figures/combinedfeelingsAP.png>
-Package pdftex.def Info: Figures/combinedfeelingsAP.png  used on input line 193.
+Package pdftex.def Info: Figures/combinedfeelingsAP.png  used on input line 242.
 (pdftex.def)             Requested size: 448.63278pt x 326.3742pt.
- [9] [10 <./Figures/combinedfeelingsAP.png (PNG copy)>] [11] (Figures/models.tex)
-Overfull \hbox (6.10245pt too wide) in paragraph at lines 3--231
+ [12 <./Figures/combinedfeelingsAP.png (PNG copy)>] (Figures/models.tex)
+Overfull \hbox (6.10245pt too wide) in paragraph at lines 3--260
  [][] 
  []
 
-<Figures/model_3_coefplot.png, id=339, 1281.78876pt x 932.48375pt>
+[13]
+<Figures/model_3_coefplot.png, id=364, 1281.78876pt x 932.48375pt>
 File: Figures/model_3_coefplot.png Graphic file (type png)
 <use Figures/model_3_coefplot.png>
-Package pdftex.def Info: Figures/model_3_coefplot.png  used on input line 235.
+Package pdftex.def Info: Figures/model_3_coefplot.png  used on input line 267.
 (pdftex.def)             Requested size: 448.63278pt x 326.3742pt.
-[12]
-<Figures/marginsplot.png, id=349, 1281.78876pt x 932.48375pt>
+ [14 <./Figures/model_3_coefplot.png (PNG copy)>]
+<Figures/marginsplot.png, id=373, 1281.78876pt x 932.48375pt>
 File: Figures/marginsplot.png Graphic file (type png)
 <use Figures/marginsplot.png>
-Package pdftex.def Info: Figures/marginsplot.png  used on input line 241.
+Package pdftex.def Info: Figures/marginsplot.png  used on input line 284.
 (pdftex.def)             Requested size: 448.63278pt x 326.3742pt.
- [13 <./Figures/model_3_coefplot.png (PNG copy)>] [14 <./Figures/marginsplot.png (PNG copy)>] (first_draft_RIP.bbl [15] (C:\Users\Rodrigo\AppData\Roaming\MiKTeX\tex/latex/ucs\uni-32.def
+ [15 <./Figures/marginsplot.png (PNG copy)>] [16] (first_draft_RIP.bbl [17] (C:\Users\Rodrigo\AppData\Roaming\MiKTeX\tex/latex/ucs\uni-32.def
 File: uni-32.def 2013/05/13 UCS: Unicode data U+2000..U+20FF
-) [16]) [17] (Figures/modelsOR.tex)
-Overfull \hbox (7.76913pt too wide) in paragraph at lines 3--263
+) [18]) [19] (Figures/modelsOR.tex)
+Overfull \hbox (7.76913pt too wide) in paragraph at lines 3--308
  [][] 
  []
 
-[18] (first_draft_RIP.aux)
+[20] (first_draft_RIP.aux)
 Package rerunfilecheck Info: File `first_draft_RIP.out' has not changed.
-(rerunfilecheck)             Checksum: 4950DF09ACD6E3AEB1C1B0675F0C224E;1963.
+(rerunfilecheck)             Checksum: A1001C2D35CFF1E941A1F8FDF7D25A70;1963.
  ) 
 Here is how much of TeX's memory you used:
- 23466 strings out of 478864
- 416760 string characters out of 2858511
- 747288 words of memory out of 3000000
- 40845 multiletter control sequences out of 15000+600000
+ 23480 strings out of 478864
+ 416925 string characters out of 2858511
+ 747791 words of memory out of 3000000
+ 40853 multiletter control sequences out of 15000+600000
  410425 words of font info for 51 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  99i,11n,97p,2178b,701s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist, replaced by a fixed one
+
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist, replaced by a fixed one
 
 <C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmbx9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmex10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmmi8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr12.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr8.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmr9.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy6.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmsy7.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti10.pfb><C:/Program Files/MiKTeX/fonts/type1/public/amsfonts/cm/cmti8.pfb>
-Output written on first_draft_RIP.pdf (18 pages, 598688 bytes).
+Output written on first_draft_RIP.pdf (20 pages, 617672 bytes).
 PDF statistics:
- 474 PDF objects out of 1000 (max. 8388607)
- 90 named destinations out of 1000 (max. 500000)
+ 498 PDF objects out of 1000 (max. 8388607)
+ 96 named destinations out of 1000 (max. 500000)
  129 words of extra memory for PDF output out of 10000 (max. 10000000)
 
