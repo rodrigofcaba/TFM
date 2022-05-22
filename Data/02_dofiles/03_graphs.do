@@ -49,4 +49,4 @@ graph export Paper/Figures/AP_index_by_party_id.png, replace
 
 egen AP_wave = mean(AP_index), by(wave)
 
-line 
+line AP_wave wave
