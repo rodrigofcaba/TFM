@@ -38,3 +38,15 @@ cap net install grc1leg, from (http://www.stata.com/users/vwiggins)
 grc1leg feel_psoe_dif_by_party feel_pp_dif_by_party  feel_up_dif_by_party feel_vox_dif_by_party feel_cs_dif_by_party, legendfrom(feel_pp_dif_by_party) name(combined_graph, replace) span rows(3)
 
 graph export Paper/Figures/combinedfeelingsAP.png, replace
+
+hist AP_index, by(partid, note("")) yti("")
+
+graph export Paper/Figures/AP_index_by_partisanship.png, replace
+
+hist AP_index, by(party_id, note("")) yti("")
+
+graph export Paper/Figures/AP_index_by_party_id.png, replace
+
+egen AP_wave = mean(AP_index), by(wave)
+
+line 

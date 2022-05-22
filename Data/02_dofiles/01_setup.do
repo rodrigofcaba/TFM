@@ -1,7 +1,7 @@
 clear all
 set more off
 
-global projectdir "C:/Users/Rodrigo/Desktop/TFM"
+global projectdir "C:\Users\Rodrigo\Documents\programming\TFM"
 
 cd $projectdir
 
@@ -22,7 +22,7 @@ s0_ s1_ s2_ s2R_ s3a_ s4a_ s8_ /// //sociodemografic vars
 p4a_ p4b_ p4c_ p4d_ p4e_ p4f_ p4g_ p4h_ ///
 p11f_ p11g_ p11h_ p11i_ p11r_ /// //feelings towards party voters
 p7l_ p9l_ p14h_ ///
-p35a_ /// //party id
+p35_ p35a_ /// //party id
 p37a_ p37b_ p38a_ ///
 p72a_ p72b_ p72c_ p72e_ p72l_ p72f_ ///
 p75_ ///
@@ -54,7 +54,7 @@ rename p74e_ prob_vote_cs
 rename p74l_ prob_vote_vox
 rename p74f_ prob_vote_erc
 
-la var spanish_econ_assessment "Economic voting"
+la var spanish_econ_assessment "Economic assessment"
 
 * Attitudes controls
 rename p4a_ unemployment_sit
@@ -99,9 +99,41 @@ la var religious "Belongs to a church"
 
 drop p??_? p???_? p????_? p?????_? trust* g?_0
 
+
 *Party id recode:
 recode p35a_ (1 = 2 "PP") (2=4 "PSOE") (3 4 = 5 "UP + IU") (5 = 3 "Ciudadanos") (13 = 1 "VOX") (6/12 = .) , into(party_id)
 tab party_id
+la var party_id "Party ID"
+
+gen government_id = .
+gen opposition_id = .
+gen no_id = .
+
+recode government_id . = 1 if (party_id == 4 & wave == 4) | (party_id == 2  & wave < 4)
+recode government_id . = 0
+
+recode opposition_id . = 1 if ///
+(party_id == 2 & wave == 4) | ///
+(party_id == 1 ) | ///
+(party_id == 3  ) | ///
+(party_id == 4  & wave < 4) | ///
+(party_id == 5  & wave < 4)
+recode opposition_id . = 0
+
+recode no_id . = 1 if p35_ == 0
+recode no_id . = 0
+
+gen partid = .
+forvalues wave = 1/4 {
+recode partid . = 0 if government_id  & wave == `wave'
+recode partid . = 1 if opposition_id  & wave == `wave'
+recode partid . = 2 if no_id  & wave == `wave'
+}
+
+la var partid "Party ID"
+la def partid 0 "Government partisan" 1 "Opposition partisan" 2 "No party id"
+la val partid partid
+
 gen vote_incumbent = .
 recode vote_incumbent . = 1 if (vote_intention == 1 & wave == 3) | (prob_vote_psoe >= 5  & wave == 4) | (prob_vote_up >= 5  & wave == 4) 
 recode vote_incumbent . = 0 
@@ -185,6 +217,8 @@ else {
 	* Respondent's affective polarization index:
 	gen AP_index = sqrt(pp_pol + psoe_pol + up_pol + cs_pol)
 }
+
+recode AP_index 0 = . if pp_affect  == 0 & psoe_affect == 0 & up_affect == 0 & cs_affect == 0 & vox_affect == 0
 
 la var AP_index "AP index"
 * AP dummy
