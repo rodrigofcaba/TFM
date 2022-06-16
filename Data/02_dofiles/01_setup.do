@@ -130,6 +130,9 @@ recode partid . = 1 if opposition_id  & wave == `wave'
 recode partid . = 2 if no_id  & wave == `wave'
 }
 
+la var opposition_id "Opposition supporter"
+label def opposition_id 0 "Incumbent supporter" 1 "Opposition Supporter"
+la val opposition_id opposition_id
 la var partid "Party ID"
 la def partid 0 "Government partisan" 1 "Opposition partisan" 2 "No party id"
 la val partid partid
@@ -140,7 +143,8 @@ recode vote_incumbent . = 0
 la var vote_incumbent "Intention to vote for the incumbent"
 
 recode spanish_econ_assessment (1=-2) (2=-1) (3=0) (4=1) (5=2)
-
+la def spanish_econ_assessment -2 "A lot worse" -1 "A little worse" 0 "No difference" 1 "A little better" 2 "A lot better"
+la val spanish_econ_assessment spanish_econ_assessment
 * Parties share per wave:
 foreach x in pp psoe up cs vox erc {
 gen `x'_share = .
