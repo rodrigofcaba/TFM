@@ -1,10 +1,6 @@
 clear all
 set more off
 
-global projectdir "C:\Users\Rodrigo\Documents\programming\TFM"
-
-cd $projectdir
-
 use Data/01_raw/E-DEM-Waves-Dataset, clear
 
 * Reshape wide to long format for panel data:
