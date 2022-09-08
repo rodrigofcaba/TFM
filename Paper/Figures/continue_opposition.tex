@@ -1,0 +1,23 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{2}{c}}
+\toprule
+                &\multicolumn{2}{c}{Likelihood of voting for the incumbent}\\\cmidrule(lr){2-3}
+                & Baseline         &+ Sociodemografic controls         \\
+\midrule
+Economic assessment&    0.435\sym{*}  &    0.434\sym{*}  \\
+                &   (2.34)         &   (2.30)         \\
+AP index        &    0.205\sym{***}&    0.247\sym{***}\\
+                &   (5.18)         &   (6.07)         \\
+Economic assessment $\times$ AP index&   0.0180         &-0.000288         \\
+                &   (0.42)         &  (-0.01)         \\
+Opposition supporter&   -3.785\sym{***}&   -3.786\sym{***}\\
+                & (-20.31)         & (-20.17)         \\
+\midrule
+Pseudo \(R^{2}\)&    0.319         &    0.333         \\
+Observations    &     3459         &     3459         \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}

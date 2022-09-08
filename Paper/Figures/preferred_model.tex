@@ -1,0 +1,57 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\toprule
+                &\multicolumn{5}{c}{Likelihood of voting for the incumbent}                                    \\\cmidrule(lr){2-6}
+                & Baseline         &+ Sociodemografic controls         &     est3         &     est4         &     est5         \\
+\midrule
+Economic assessment&   0.0778         &    0.963         &    1.084         &    0.459\sym{***}&    0.431\sym{***}\\
+                &   (0.84)         &   (1.30)         &   (1.31)         &   (6.55)         &   (5.92)         \\
+Supporters      &                  &        0         &        0         &                  &                  \\
+                &                  &      (.)         &      (.)         &                  &                  \\
+Partisans       &                  &    1.666\sym{*}  &    1.654\sym{*}  &                  &                  \\
+                &                  &   (2.47)         &   (2.31)         &                  &                  \\
+Fans            &                  &    2.527\sym{**} &    2.572\sym{**} &                  &                  \\
+                &                  &   (2.95)         &   (2.90)         &                  &                  \\
+Supporters $\times$ Economic assessment&                  &        0         &        0         &                  &                  \\
+                &                  &      (.)         &      (.)         &                  &                  \\
+Partisans $\times$ Economic assessment&                  &   -0.333         &   -0.469         &                  &                  \\
+                &                  &  (-0.42)         &  (-0.54)         &                  &                  \\
+Fans $\times$ Economic assessment&                  &   -1.445         &   -1.582         &                  &                  \\
+                &                  &  (-1.51)         &  (-1.56)         &                  &                  \\
+Sociodemografic controls&                  &                  &                  &                  &                  \\
+Region          &                  &                  &   0.0175         &                  & -0.00793         \\
+                &                  &                  &   (0.45)         &                  &  (-0.67)         \\
+Sex             &                  &                  &   -0.352         &                  &   0.0925         \\
+                &                  &                  &  (-0.90)         &                  &   (0.82)         \\
+Age             &                  &                  &  -0.0310         &                  & -0.00293         \\
+                &                  &                  &  (-1.80)         &                  &  (-0.55)         \\
+Habitat (Nr. of inhabitants)&                  &                  &    0.473\sym{*}  &                  &   0.0466         \\
+                &                  &                  &   (1.96)         &                  &   (0.73)         \\
+Marital Status  &                  &                  &   0.0367         &                  &   0.0332         \\
+                &                  &                  &   (0.36)         &                  &   (1.20)         \\
+Education level &                  &                  &   -0.181         &                  &   0.0386         \\
+                &                  &                  &  (-1.25)         &                  &   (0.92)         \\
+Occupation      &                  &                  &   0.0331         &                  & -0.00619         \\
+                &                  &                  &   (0.38)         &                  &  (-0.22)         \\
+Income          &                  &                  &   0.0244         &                  &  -0.0702\sym{***}\\
+                &                  &                  &   (0.33)         &                  &  (-3.31)         \\
+Belongs to a church&                  &                  &   -0.475         &                  &   -0.542\sym{***}\\
+                &                  &                  &  (-1.26)         &                  &  (-4.48)         \\
+AP index (dichotomous)&                  &                  &                  &   -3.455\sym{***}&   -3.470\sym{***}\\
+                &                  &                  &                  & (-19.22)         & (-19.28)         \\
+Economic assessment $\times$ AP index (dichotomous)&                  &                  &                  &   -0.792\sym{***}&   -0.793\sym{***}\\
+                &                  &                  &                  &  (-4.91)         &  (-4.87)         \\
+Opposition supporter&                  &                  &                  &   -2.228\sym{***}&   -2.220\sym{***}\\
+                &                  &                  &                  & (-11.91)         & (-11.67)         \\
+Constant        &    1.127\sym{***}&    1.406\sym{*}  &    3.206\sym{*}  &    1.326\sym{***}&    1.539\sym{***}\\
+                &  (14.44)         &   (2.20)         &   (2.06)         &   (7.21)         &   (3.40)         \\
+\midrule
+Pseudo \(R^{2}\)&    0.001         &    0.064         &    0.109         &    0.280         &    0.295         \\
+Observations    &     1037         &      812         &      812         &     3737         &     3737         \\
+\bottomrule
+\multicolumn{6}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{6}{l}{\footnotesize NOTE: The AP dichotomous variable splits the sample between those avobe and below the average AP level.}\\
+\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}

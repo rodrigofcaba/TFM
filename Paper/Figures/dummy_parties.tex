@@ -1,0 +1,31 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{2}{c}}
+\toprule
+                &\multicolumn{2}{c}{Likelihood of voting for the incumbent}\\\cmidrule(lr){2-3}
+                & Baseline         &+ Sociodemografic controls         \\
+\midrule
+Economic assessment&    0.310         &    0.253         \\
+                &   (1.63)         &   (1.29)         \\
+AP index (dichotomous)&   -5.139\sym{***}&   -5.238\sym{***}\\
+                & (-11.44)         & (-11.21)         \\
+Economic assessment $\times$ AP index (dichotomous)&   0.0503         &   0.0970         \\
+                &   (0.11)         &   (0.20)         \\
+Ref. category: PSOE (incumbent)&                  &                  \\
+VOX             &   -5.561\sym{***}&   -5.441\sym{***}\\
+                &  (-5.24)         &  (-5.06)         \\
+PP              &   -4.153\sym{***}&   -4.059\sym{***}\\
+                &  (-5.18)         &  (-4.95)         \\
+Ciudadanos      &   -3.457\sym{***}&   -3.534\sym{***}\\
+                &  (-7.88)         &  (-7.77)         \\
+UP              &   -1.199\sym{***}&   -1.521\sym{***}\\
+                &  (-3.39)         &  (-3.84)         \\
+\midrule
+Pseudo \(R^{2}\)&    0.555         &    0.565         \\
+Observations    &     1145         &     1145         \\
+\bottomrule
+\multicolumn{3}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{3}{l}{\footnotesize NOTE: The AP dichotomous variable splits the sample between those avobe and below the average AP level.}\\
+\multicolumn{3}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}

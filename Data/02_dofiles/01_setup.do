@@ -5,7 +5,6 @@ global projectdir "C:\Users\Rodrigo\Documents\programming\TFM"
 
 cd $projectdir
 
-args model
 use Data/01_raw/E-DEM-Waves-Dataset, clear
 
 * Reshape wide to long format for panel data:
@@ -98,10 +97,10 @@ la var income "Income"
 la var religious "Belongs to a church"
 
 drop p??_? p???_? p????_? p?????_? trust* g?_0
-
+drop if wave == 1
 
 *Party id recode:
-recode p35a_ (1 = 2 "PP") (2=4 "PSOE") (3 4 = 5 "UP + IU") (5 = 3 "Ciudadanos") (13 = 1 "VOX") (6/12 = .) , into(party_id)
+recode p35a_ (1 = 2 "PP") (2=4 "PSOE") (3 4 = 5 "UP") (5 = 3 "Ciudadanos") (13 = 1 "VOX") (6/12 = .) , into(party_id)
 tab party_id
 la var party_id "Party ID"
 
@@ -109,56 +108,54 @@ gen government_id = .
 gen opposition_id = .
 gen no_id = .
 
-recode government_id . = 1 if (party_id == 4 & wave == 4) | (party_id == 2  & wave < 4)
+recode government_id . = 1 if party_id == 4 | (party_id == 5 & wave == 4)
 recode government_id . = 0
 
-recode opposition_id . = 1 if ///
-(party_id == 2 & wave == 4) | ///
-(party_id == 1 ) | ///
-(party_id == 3  ) | ///
-(party_id == 4  & wave < 4) | ///
-(party_id == 5  & wave < 4)
-recode opposition_id . = 0
+// recode opposition_id . = 1 if ///
+// (party_id == 2 ) | ///
+// (party_id == 1 ) | ///
+// (party_id == 3 )
+recode opposition_id . = 0 if party_id == 4 | (party_id == 5 & wave == 4)
+recode opposition_id . = 1
 
 recode no_id . = 1 if p35_ == 0
 recode no_id . = 0
 
 gen partid = .
-forvalues wave = 1/4 {
-recode partid . = 0 if government_id  & wave == `wave'
-recode partid . = 1 if opposition_id  & wave == `wave'
-recode partid . = 2 if no_id  & wave == `wave'
-}
+// forvalues wave = 1/4 {
+recode partid . = 0 if government_id
+recode partid . = 1 if opposition_id
+recode partid . = 2 if no_id
+// }
 
 la var opposition_id "Opposition supporter"
-label def opposition_id 0 "Incumbent supporter" 1 "Opposition Supporter"
+label def opposition_id 0 "Incumbent supporter" 1 "Opposition supporter"
 la val opposition_id opposition_id
 la var partid "Party ID"
 la def partid 0 "Government partisan" 1 "Opposition partisan" 2 "No party id"
 la val partid partid
 
+* DEPENDENT VARIABLE:
 gen vote_incumbent = .
-recode vote_incumbent . = 1 if (vote_intention == 1 & wave == 3) | (prob_vote_psoe >= 5  & wave == 4) | (prob_vote_up >= 5  & wave == 4) 
+recode vote_incumbent . = 1 if (vote_intention == 2 & wave == 3) | (prob_vote_psoe >= 5  & wave == 4) | (prob_vote_up >= 5  & wave == 4) 
 recode vote_incumbent . = 0 
 la var vote_incumbent "Intention to vote for the incumbent"
 
+* ECONOMIC ASSESSMENT:
 recode spanish_econ_assessment (1=-2) (2=-1) (3=0) (4=1) (5=2)
 la def spanish_econ_assessment -2 "A lot worse" -1 "A little worse" 0 "No difference" 1 "A little better" 2 "A lot better"
 la val spanish_econ_assessment spanish_econ_assessment
+
 * Parties share per wave:
 foreach x in pp psoe up cs vox erc {
 gen `x'_share = .
 }
 
 gen total_share = .
-if (`model' == 1){
-	recode total_share . = 89.95 if wave < 4
-	recode total_share . = 88.17 if wave == 4
-}
-else {
-	recode total_share . = 89.85 if wave < 4
-	recode total_share . =  77.91 if wave == 4
-}
+
+recode total_share . = 89.95 if wave < 4
+recode total_share . = 88.17 if wave == 4
+
 
 *PP
 recode pp_share . = 33.01 if wave != 4
@@ -179,49 +176,37 @@ recode vox_share . = 10.26 if wave == 4
 recode erc_share . = 2.63 if wave != 4
 recode erc_share . = 3.89 if wave == 4
 
-if(`model' == 1){
-	* Standarize party vote shares to range from 0 to 1:
-	foreach x in pp psoe up cs vox {
-	gen `x'_standard_share = `x'_share/total_share
-	}
 
-	* Respondent's affect for parties
-	foreach x in pp psoe up cs vox {
-	gen `x'_affect = `x'_like*`x'_standard_share
-	}
-
-	* Respondent's Average party affect:
-	egen average_party_affect = rowmean(*_affect)
-
-	foreach x in pp psoe up cs vox {
-	gen `x'_pol = `x'_standard_share*(`x'_like-average_party_affect)^2
-	}
-
-	* Respondent's affective polarization index:
-	gen AP_index = sqrt(pp_pol + psoe_pol + up_pol + cs_pol + vox_pol)
-}
-else {
-	* Standarize party vote shares to range from 0 to 1:
-	foreach x in pp psoe up cs {
-	gen `x'_standard_share = `x'_share/total_share
-	}
-
-	* Respondent's affect for parties
-	foreach x in pp psoe up cs {
-	gen `x'_affect = `x'_like*`x'_standard_share
-	}
-
-	* Respondent's Average party affect:
-	egen average_party_affect = rowmean(*_affect)
-
-	foreach x in pp psoe up cs {
-	gen `x'_pol = `x'_standard_share*(`x'_like-average_party_affect)^2
-	}
-
-	* Respondent's affective polarization index:
-	gen AP_index = sqrt(pp_pol + psoe_pol + up_pol + cs_pol)
+* Standarize party vote shares to range from 0 to 1:
+foreach x in pp psoe up cs vox {
+gen `x'_standard_share = `x'_share/total_share
 }
 
+* Respondent's affect for parties
+foreach x in pp psoe up cs vox {
+gen `x'_affect = `x'_like*`x'_standard_share
+}
+
+* Respondent's Average party affect:
+egen average_party_affect = rowmean(*_affect)
+
+foreach x in pp psoe up cs vox {
+gen `x'_pol = `x'_standard_share*(`x'_like-average_party_affect)^2
+}
+
+* Respondent's affective polarization index:
+gen AP_index = sqrt(pp_pol + psoe_pol + up_pol + cs_pol + vox_pol)
+
+
+gen positive_partisanship = sqrt(psoe_pol + up_pol) if partid == 0
+replace positive_partisanship = sqrt(pp_pol + cs_pol + vox_pol) if positive_partisanship == .
+
+gen negative_partisanship = sqrt(pp_pol + cs_pol + vox_pol) if partid == 1
+replace negative_partisanship = sqrt(psoe_pol + up_pol) if negative_partisanship == .
+
+
+
+*Drop 0 when individual answers 0 affect to all parties
 recode AP_index 0 = . if pp_affect  == 0 & psoe_affect == 0 & up_affect == 0 & cs_affect == 0 & vox_affect == 0
 
 la var AP_index "AP index"
@@ -230,9 +215,20 @@ gen AP_index_dummy = .
 su AP_index
 recode AP_index_dummy . = 0 if AP_index < r(mean)
 recode AP_index_dummy . = 1 if AP_index >= r(mean)
-la def AP_index_dummy 0 "Below the Affective Polarization median" 1 "Above Affective Polarization the median"
+la def AP_index_dummy 0 "Below the Affective Polarization average" 1 "Above the Affective Polarization average"
 la val AP_index_dummy AP_index_dummy
+la var AP_index_dummy "AP index (dichotomous)"
 
+*GROUPS
+
+sum AP_index
+
+local m=r(mean)
+local sd=r(sd)
+local low = `m'-`sd'
+local high=`m'+`sd'
+recode AP_index (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups)
+la var groups "Groups of voters"
 
 * p74 (probability of voting): only waves 3 and 4.
 * cannot know probability of voting the incumbent before moción de censura.

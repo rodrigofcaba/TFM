@@ -1,0 +1,45 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                &\multicolumn{3}{c}{Likelihood of voting for the incumbent}\\\cmidrule(lr){2-4}
+                & Baseline         &+ Sociodemografic controls         &     est3         \\
+\midrule
+Economic assessment&   0.0778         &    0.963         &    1.084         \\
+                &   (0.84)         &   (1.30)         &   (1.31)         \\
+Partisans       &                  &    1.666\sym{*}  &    1.654\sym{*}  \\
+                &                  &   (2.47)         &   (2.31)         \\
+Fans            &                  &    2.527\sym{**} &    2.572\sym{**} \\
+                &                  &   (2.95)         &   (2.90)         \\
+Partisans $\times$ Economic assessment&                  &   -0.333         &   -0.469         \\
+                &                  &  (-0.42)         &  (-0.54)         \\
+Fans $\times$ Economic assessment&                  &   -1.445         &   -1.582         \\
+                &                  &  (-1.51)         &  (-1.56)         \\
+Region          &                  &                  &   0.0175         \\
+                &                  &                  &   (0.45)         \\
+Sex             &                  &                  &   -0.352         \\
+                &                  &                  &  (-0.90)         \\
+Age             &                  &                  &  -0.0310         \\
+                &                  &                  &  (-1.80)         \\
+Habitat (Nr. of inhabitants)&                  &                  &    0.473\sym{*}  \\
+                &                  &                  &   (1.96)         \\
+Marital Status  &                  &                  &   0.0367         \\
+                &                  &                  &   (0.36)         \\
+Education level &                  &                  &   -0.181         \\
+                &                  &                  &  (-1.25)         \\
+Occupation      &                  &                  &   0.0331         \\
+                &                  &                  &   (0.38)         \\
+Income          &                  &                  &   0.0244         \\
+                &                  &                  &   (0.33)         \\
+Belongs to a church&                  &                  &   -0.475         \\
+                &                  &                  &  (-1.26)         \\
+Constant        &    1.127\sym{***}&    1.406\sym{*}  &    3.206\sym{*}  \\
+                &  (14.44)         &   (2.20)         &   (2.06)         \\
+\midrule
+Pseudo \(R^{2}\)&    0.001         &    0.064         &    0.109         \\
+Observations    &     1037         &      812         &      812         \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize \textit{t} statistics in parentheses}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}

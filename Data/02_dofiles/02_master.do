@@ -19,12 +19,11 @@ set autotabgraphs on, perm
 * Set working directory to the root of the folder:
 cap global projectdir "C:\Users\Rodrigo\Documents\programming\TFM"
 
-global model 1
 cd $projectdir
 
-do Data/02_dofiles/01_setup.do $model
-// do Data/02_dofiles/03_graphs.do 
+do Data/02_dofiles/01_setup.do
 do Data/02_dofiles/04_models.do
+do Data/02_dofiles/03_graphs.do 
 
 // reg spanish_econ_assessment i.partid if AP_index_dummy
 // help reg
@@ -37,3 +36,12 @@ do Data/02_dofiles/04_models.do
 // tab no_id
 //
 // sum AP_index if !AP_index_dummy 
+
+
+tab partid, nol
+tab groups if partid == 0
+
+
+tab spanish_econ_assessment
+hist AP_index, by(party_id) name(G1, replace)
+hist AP_index, by(opposition_id) name(G2, replace)
