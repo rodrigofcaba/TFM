@@ -271,14 +271,14 @@ la var AP_index_dummy "AP index (dichotomous)"
 
 *GROUPS
 
-sum AP_index
-
-local m=r(mean)
-local sd=r(sd)
-local low = `m'-`sd'
-local high=`m'+`sd'
-recode AP_index (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups)
-la var groups "Groups of voters"
+// sum AP_index
+//
+// local m=r(mean)
+// local sd=r(sd)
+// local low = `m'-`sd'
+// local high=`m'+`sd'
+// recode AP_index (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups)
+// la var groups "Groups of voters"
 
 sum AP_index2
 
@@ -286,7 +286,8 @@ local m=r(mean)
 local sd=r(sd)
 local low = `m'-`sd'
 local high=`m'+`sd'
-recode AP_index2 (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups2)
-la var groups2 "Groups of voters2"
+recode AP_index2 (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups)
+la var groups "Groups of voters2"
+
 
 save Data/03_temp/data.dta, replace
