@@ -131,16 +131,38 @@ la var partid "Party ID"
 la def partid 0 "Government partisan" 1 "Opposition partisan" 2 "No party id"
 la val partid partid
 
-* DEPENDENT VARIABLE:
+********************************************************************************
+****************************** DEPENDENT VARIABLES *****************************
+********************************************************************************
+
 gen vote_incumbent = .
 recode vote_incumbent . = 1 if (vote_intention == 2 & wave == 3) | (prob_vote_psoe >= 5  & wave == 4) | (prob_vote_up >= 5  & wave == 4) 
 recode vote_incumbent . = 0 
 la var vote_incumbent "Intention to vote for the incumbent"
 
-* ECONOMIC ASSESSMENT:
+gen vote_psoe = .
+recode vote_psoe . = 1 if (vote_intention == 2 & wave == 3) | (prob_vote_psoe >=5 & wave == 4)
+recode vote_psoe . = 0
+la var vote_psoe "Intention to vote for the incumbent (PSOE)"
+
+
+********************************************************************************
+***************************** ECONOMIC ASSESSMENT*******************************
+********************************************************************************
+
 recode spanish_econ_assessment (1=-2) (2=-1) (3=0) (4=1) (5=2)
 la def spanish_econ_assessment -2 "A lot worse" -1 "A little worse" 0 "No difference" 1 "A little better" 2 "A lot better"
 la val spanish_econ_assessment spanish_econ_assessment
+
+
+* DUMMY VERSION:
+recode spanish_econ_assessment (-2 -1 = 1 "Worse") (1 2 = 2 "Better") (0 = .), into(spanish_econ_assessment_dummy)
+la var spanish_econ_assessment_dummy "Assessment of the economic situation of the country"
+
+
+********************************************************************************
+********************************* AP INDEX *************************************
+********************************************************************************
 
 * Parties share per wave:
 foreach x in pp psoe up cs vox erc {
@@ -151,7 +173,6 @@ gen total_share = .
 
 recode total_share . = 89.95 if wave < 4
 recode total_share . = 88.17 if wave == 4
-
 
 *PP
 recode pp_share . = 33.01 if wave != 4
@@ -178,34 +199,67 @@ foreach x in pp psoe up cs vox {
 gen `x'_standard_share = `x'_share/total_share
 }
 
-* Respondent's affect for parties
-foreach x in pp psoe up cs vox {
-gen `x'_affect = `x'_like*`x'_standard_share
-}
 
-* Respondent's Average party affect:
-egen average_party_affect = rowmean(*_affect)
+** FIRST OPTION (like party):
 
-foreach x in pp psoe up cs vox {
-gen `x'_pol = `x'_standard_share*(`x'_like-average_party_affect)^2
-}
+	* Respondent's affect for parties:
+	foreach x in pp psoe up cs vox {
+	gen `x'_affect = `x'_like*`x'_standard_share
+	}
+	
+	* Respondent's Average party affect:
+	egen average_party_affect = rowmean(*_affect)
 
-* Respondent's affective polarization index:
-gen AP_index = sqrt(pp_pol + psoe_pol + up_pol + cs_pol + vox_pol)
+	foreach x in pp psoe up cs vox {
+	gen `x'_pol = `x'_standard_share*(`x'_like-average_party_affect)^2
+	}
+	
+	* Respondent's affective polarization index:
+	gen AP_index = sqrt(pp_pol + psoe_pol + up_pol + cs_pol + vox_pol)
+
+	*Drop 0 when individual answers 0 affect to all parties
+	recode AP_index 0 = . if pp_affect  == 0 & psoe_affect == 0 & up_affect == 0 ///
+	& cs_affect == 0 & vox_affect == 0
+	
+	la var AP_index "Alternative AP index"
+
+** ALTERNATIVE (affects towards voters): 
+
+	* Respondent's affect for parties' voters:
+	foreach x in pp psoe up cs vox {
+	gen `x'_alt = feel_`x'_voters*`x'_standard_share
+	}
+	
+	* Respondent's Average party affect (alt):
+	egen average_party_affect_alt = rowmean(*_alt)
+
+	foreach x in pp psoe up cs vox {
+	gen `x'_pol2 = `x'_standard_share*(feel_`x'_voters-average_party_affect)^2
+	}
+	
+	* Respondent's affective polarization index:
+	gen AP_index2 = sqrt(pp_pol2 + psoe_pol2 + up_pol2 + cs_pol2 + vox_pol2)
+
+	*Drop 0 when individual answers 0 affect to all parties
+	recode AP_index2 0 = . if pp_alt  == 0 & psoe_alt == 0 & up_alt == 0 ///
+	& cs_alt == 0 & vox_alt == 0
+	
+	la var AP_index2 "AP index"
+
+	
+** POSITIVE VS NEGATIVE PARTISANSHIP
 
 
-gen positive_partisanship = sqrt(psoe_pol + up_pol) if partid == 0
-replace positive_partisanship = sqrt(pp_pol + cs_pol + vox_pol) if positive_partisanship == .
+gen positive_partisanship = sqrt(psoe_pol2 + up_pol2)
+la var positive_partisanship "In-group feelings"
+recode positive_partisanship 0 = . if pp_alt  == 0 & psoe_alt == 0 & up_alt == 0 ///
+	& cs_alt == 0 & vox_alt == 0
+	
+gen negative_partisanship = sqrt(pp_pol2 + cs_pol2 + vox_pol2 )
+la var negative_partisanship "Out-group feelings"
+recode negative_partisanship 0 = . if pp_alt  == 0 & psoe_alt == 0 & up_alt == 0 ///
+	& cs_alt == 0 & vox_alt == 0
 
-gen negative_partisanship = sqrt(pp_pol + cs_pol + vox_pol) if partid == 1
-replace negative_partisanship = sqrt(psoe_pol + up_pol) if negative_partisanship == .
-
-
-
-*Drop 0 when individual answers 0 affect to all parties
-recode AP_index 0 = . if pp_affect  == 0 & psoe_affect == 0 & up_affect == 0 & cs_affect == 0 & vox_affect == 0
-
-la var AP_index "AP index"
 * AP dummy
 gen AP_index_dummy = .
 su AP_index
@@ -226,11 +280,13 @@ local high=`m'+`sd'
 recode AP_index (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups)
 la var groups "Groups of voters"
 
-* p74 (probability of voting): only waves 3 and 4.
-* cannot know probability of voting the incumbent before moción de censura.
-* p38 (satisfaction with government): only waves 2 and 3.
+sum AP_index2
 
-recode spanish_econ_assessment (1 2 = 1 "Worse") (4 5 = 2 "Better") (3 = .), into(spanish_econ_assessment_dummy)
-la var spanish_econ_assessment_dummy "Assessment of the economic situation of the country"
+local m=r(mean)
+local sd=r(sd)
+local low = `m'-`sd'
+local high=`m'+`sd'
+recode AP_index2 (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups2)
+la var groups2 "Groups of voters2"
 
 save Data/03_temp/data.dta, replace

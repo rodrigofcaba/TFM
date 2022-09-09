@@ -168,7 +168,68 @@ mgroups("Likelihood of voting for the incumbent", pattern(1 0) prefix(\multicolu
 label sfmt(%9.3g) booktabs nodep nomti nonum nogap pr2 obslast compress mlab("Baseline"  "+ Sociodemografic controls") refcat(1.party_id "Ref. category: PSOE (incumbent)", label(" ")) nobase drop(sex age place_residence marit_status education occupation income religious _cons region)
 
 
+
+
+
+
+
+logit vote_incumbent i.spanish_econ_assessment_dummy opposition $sociodemo
+logit vote_incumbent i.spanish_econ_assessment_dummy AP_index2 opposition $sociodemo
+logit vote_incumbent i.spanish_econ_assessment_dummy##c.AP_index2 opposition $sociodemo 
+logit vote_incumbent  i.spanish_econ_assessment_dummy positive_partisanship negative_partisanship opposition $sociodemo
+
+
+sum AP_index2
+
+local m=r(mean)
+local sd=r(sd)
+local low = `m'-`sd'
+local high=`m'+`sd'
+
+margins if ! opposition, at(spanish_econ_assessment_dummy=(1 2) AP_index2=(`low' `m' `high'))
+marginsplot , title("Incumbent's potential voters", size(medsmall)) ytitle("Predicted probability of voting for the incumbent") ///
+ylabel(0(.25)1, format(%12.2f) labs(*.75)) ///
+yline(.5 , lwidth(medthin) lpattern(dash))  ///
+xtitle("Economic assessment", axis(1) size(medsmall))  xlabel(1 "Worse" 2 "Better", axis(1) labs(vsmall)) ///
+ylabel(0.75 1) name("margins", replace) legend(rows(1))
+
+
+logit vote_incumbent  i.spanish_econ_assessment_dummy##c.positive_partisanship negative_partisanship opposition $sociodemo
+
+sum positive_partisanship
+
+local m=r(mean)
+local sd=r(sd)
+local low = `m'-`sd'
+local high=`m'+`sd'
+
+margins if ! opposition, at(spanish_econ_assessment_dummy=(1 2) positive_partisanship=(`low' `m' `high'))
+marginsplot , title("Incumbent's potential voters", size(medsmall)) ytitle("Predicted probability of voting for the incumbent") ///
+ylabel(0(.25)1, format(%12.2f) labs(*.75)) ///
+yline(.5 , lwidth(medthin) lpattern(dash))  ///
+xtitle("Economic assessment", axis(1) size(medsmall))  xlabel(1 "Worse" 2 "Better", axis(1) labs(vsmall)) ///
+ylabel(0.75 1) name("margins", replace) legend(rows(1))
+
+
+logit vote_incumbent i.spanish_econ_assessment_dummy##c.negative_partisanship positive_partisanship  opposition $sociodemo
+
+sum negative_partisanship
+
+local m=r(mean)
+local sd=r(sd)
+local low = `m'-`sd'
+local high=`m'+`sd'
+
+margins if ! opposition, at(spanish_econ_assessment_dummy=(1 2) negative_partisanship=(`low' `m' `high'))
+marginsplot , title("Incumbent's potential voters", size(medsmall)) ytitle("Predicted probability of voting for the incumbent") ///
+ylabel(0(.25)1, format(%12.2f) labs(*.75)) ///
+yline(.5 , lwidth(medthin) lpattern(dash))  ///
+xtitle("Economic assessment", axis(1) size(medsmall))  xlabel(1 "Worse" 2 "Better", axis(1) labs(vsmall)) ///
+ylabel(0.75 1) name("margins", replace) legend(rows(1))
+
+
+
 * Evaluation of the economy by partisanship
-hist AP_index, normal
+hist AP_index2, normal
 reg spanish_econ_assessment i.partid AP_index_dummy $sociodemo 
 coefplot, xline(0)
