@@ -1,3 +1,9 @@
+********************************************************************************
+********************************* GRAPHS ***************************************
+********************************************************************************
+
+** Differences in feelings according to partisanship **
+
 foreach x in pp psoe up cs vox{
 egen feel_avg_`x' = mean(feel_`x'_voters), by(party_id AP_index)
 
@@ -26,38 +32,65 @@ graph export Paper/Figures/diff_feel_`x'.png, replace
 use Data/03_temp/data, replace
 }
 
+
+** Install gtc1leg command:
 if(_rc==111){
 cap net install grc1leg, from (http://www.stata.com/users/vwiggins)
 }
 
-*Combined graphs
+
+** Combined graph (all the parties)
 grc1leg feel_psoe_dif_by_party feel_pp_dif_by_party  feel_up_dif_by_party feel_vox_dif_by_party feel_cs_dif_by_party, legendfrom(feel_pp_dif_by_party) name(combined_graph, replace) span rows(3)
 
 graph export Paper/Figures/combinedfeelingsAP.png, replace
 
-* GROUPS
-sum AP_index
+********************************************************************************
+******************************* GROUPS *****************************************
+********************************************************************************
+
+********************************************************************************
+*********************** Histogram of API by SD *********************************
+********************************************************************************
+sum AP_index2
 
 local m=r(mean)
 local sd=r(sd)
 local low = `m'-`sd'
 local high=`m'+`sd'
 
- histogram AP_index , normal ///
-	fc(none) lc(gray) ///
-   xline(`low',  lp(dash)) xline(`high', lp(dash)) ///
-   xlabel(`low' "-SD" `m' "Mean = `=string(`m',"%6.2f")'" `high' "+SD") xtitle("")
+histogram AP_index2 , normal ///
+fc(none) lc(gray) ///
+xline(`low',  lp(dash)) xline(`high', lp(dash)) ///
+xlabel(`low' "-SD" `m' "Mean = `=string(`m',"%6.2f")'" `high' "+SD") xtitle("") name(ap)
+
+// sum final
+//
+// local m=r(mean)
+// local sd=r(sd)
+// local low = `m'-`sd'
+// local high=`m'+`sd'
+//
+// histogram final , normal ///
+// fc(none) lc(gray) ///
+// xline(`low',  lp(dash)) xline(`high', lp(dash)) ///
+// xlabel(`low' "-SD" `m' "Mean = `=string(`m',"%6.2f")'" `high' "+SD") xtitle("") name(final)
+// gr combine ap final
 
 graph export Paper/Figures/groupsHist.png, replace
 
+********************************************************************************
+************ Histogram of API government vs opposition partisans ***************
+********************************************************************************
 
-tab partid, nol
-hist AP_index, by(partid, note("")) yti("")
 
-tw  (hist AP_index if partid == 1, fcolor(gray) lcolor(gray)) (hist AP_index if partid == 0, fcolor(none) lcolor(red)), xti("Government partisan (red), Opposition partisan (gray)") legend(off)
+tw  (hist AP_index2 if partid == 1, fcolor(gray) lcolor(gray)) (hist AP_index2 if partid == 0, fcolor(none) lcolor(red)), xti("Government partisan (red), Opposition partisan (gray)") legend(off) name(d1)
 
-ttest AP_index, by(partid)
-oneway AP_index party_id, scheffe
+// tw  (hist final if partid == 1, fcolor(gray) lcolor(gray)) (hist final if partid == 0, fcolor(none) lcolor(red)), xti("Government partisan (red), Opposition partisan (gray)") legend(off) name(d2)
+//
+// gr combine d1 d2
+
+ttest AP_index2, by(partid)
+oneway AP_index2 party_id, scheffe
 
 graph export Paper/Figures/AP_index_by_partisanship.png, replace
 
@@ -89,7 +122,7 @@ local name "Unidas Podemos"
 }
 	sum AP_index2 if party_id == `x'
 	local m=r(mean)
-	hist AP_index2 if party_id == `x', xlabel(0 20 60 80 `m' "`=string(`m',"%6.2f")'") fc(none) lc(`color') note("") yti("") xti("") xline(`m', lp(dash) ) title(`name') name(G`x', replace)
+	hist AP_index2 if party_id == `x', xlabel(0 20 `m' "`=string(`m',"%6.2f")'" 80 100) fc(none) lc(`color') note("") yti("") xti("") xline(`m', lp(dash) ) title(`name') name(G`x', replace)
 }
 graph combine G1 G2 G3 G4 G5, name("AP_index_by_party_id", replace) rows(2)
 
@@ -100,8 +133,12 @@ oneway AP_index party_id, scheffe
 
 
 ** MARGINS:
-grc1leg margins, name("margins", replace)  rows(1)
+grc1leg margins, name("margins", replace) rows(1) 
 graph export Paper/Figures/margins.png, replace
+grc1leg positive_margins, name("positive_margins", replace)  rows(1)
+graph export Paper/Figures/positive_margins.png, replace
+grc1leg negative_margins, name("negative_margins", replace)  rows(1)
+graph export Paper/Figures/negative_margins.png, replace
 
 ********************************************************************************
 ************** SCATTER POSITIVE VS NEGATIVE PARTISANSHIP ***********************
@@ -112,18 +149,77 @@ tw (scatter positive_partisanship negative_partisanship if party_id == 4, yline(
 tw (scatter positive_partisanship negative_partisanship if party_id == 5, yline(50) xline(50) ti("UP")mcolor(purple) name(G2, replace)) 
 
 ** PARTIES
-tw (scatter positive_partisanship negative_partisanship if party_id==4, mcolor(red)) (scatter positive_partisanship negative_partisanship if party_id==5, mcolor(purple) xline(50) yline(50) name(G4, replace)) (scatter positive_partisanship negative_partisanship if party_id==1, mcolor(green)) (scatter positive_partisanship negative_partisanship if party_id==2,  mcolor(blue)) (scatter positive_partisanship negative_partisanship if party_id==3, mcolor(orange) legend(label(1 "PSOE") label(2 "Unidas Podemos") label(3 "VOX") label(4 "PP") label(5 "Cs")))
+tw (scatter positive_partisanship negative_partisanship if party_id==4, mcolor(red)) ///
+(scatter positive_partisanship negative_partisanship if party_id==5, mcolor(purple)) ///
+(scatter positive_partisanship negative_partisanship if party_id==1, mcolor(green)) ///
+(scatter positive_partisanship negative_partisanship if party_id==2,  mcolor(blue)) ///
+(scatter positive_partisanship negative_partisanship if party_id==3, mcolor(orange) ///
+xline(50) yline(50) ///
+legend(rows(1) label(1 "PSOE") label(2 "Unidas Podemos") label(3 "VOX") label(4 "PP") label(5 "Cs")) ///
+xlabel(0 50 80) ylabel(0 50 80) ///
+name(G4, replace))
+
+scatter positive_partisanship negative_partisanship if party_id==4, mcolor(red) ///
+xline(50) yline(50) ///
+name(PSOE, replace)
+
+scatter positive_partisanship negative_partisanship if party_id==5 & wave ==4, mcolor(purple) ///
+xline(50) yline(50) ///
+name(UP, replace)
+
+scatter positive_partisanship negative_partisanship if party_id==2, mcolor(blue) ///
+xline(50) yline(50) ///
+name(PP, replace)
+
+scatter positive_partisanship negative_partisanship if party_id==3, mcolor(orange) ///
+xline(50) yline(50) ///
+name(CS, replace)
+
+scatter positive_partisanship negative_partisanship if party_id==1, mcolor(green) ///
+xline(50) yline(50) ///
+name(VOX, replace)
+
+graph combine PSOE UP PP CS VOX
 
 ** OPPOSITION VS INCUMBENT
 tw (scatter positive_partisanship negative_partisanship if opposition_id, mcolor(blue) legend(label(2 "Incumbent supporter") label(1 "Opposition supporter")))  (scatter positive_partisanship negative_partisanship if government_id, mcolor(red)) 
 
 ** LEVELS OF AFFECTIVE POLAIRZATION (ONLY INCUMBENT)
-tw (lfit positive_partisanship negative_partisanship if groups==0 & government, lcolor(green) ytitle("In-group feelings")) (lfit positive_partisanship negative_partisanship if groups==1 & government, lcolor(blue)) (lfit positive_partisanship negative_partisanship if groups==2 & government, lcolor(red) legend(label(1 "Supporters") label(2 "Regular partsians") label(3 "Fans")) name(lfit_groups, replace)) 
+// tw ///
+// (lfit positive_partisanship negative_partisanship if groups==0 & government, lcolor(green)) ///
+// (lfit positive_partisanship negative_partisanship if groups==1 & government, lcolor(blue)) ///
+// (lfit positive_partisanship negative_partisanship if groups==2 & government, lcolor(red) ///
+// ytitle("In-group feelings") ///
+// legend(label(1 "Supporters") label(2 "Regular partsians") label(3 "Fans")) ///
+// name(lfit_groups, replace)) 
 
-tw (scatter positive_partisanship negative_partisanship if groups==0 & government, mcolor(green) msymbol(x)) (scatter positive_partisanship negative_partisanship if groups==1 & government, mcolor(blue) msymbol(x)) (scatter positive_partisanship negative_partisanship if groups==2 & government, mcolor(red) msymbol(x) yline(50) xline(50) legend(label(1 "Supporters") label(2 "Regular partsians") label(3 "Fans")) name(scatter_groups, replace))
+gr hbox negative_partisanship, by(groups)
+sum negative_partisanship if government
+tw ///
+(scatter positive_partisanship negative_partisanship if groups==0 & government, mcolor(green) ) ///
+(scatter positive_partisanship negative_partisanship if groups==1 & government, mcolor(blue) ) ///
+(scatter positive_partisanship negative_partisanship if groups==2 & government, mcolor(red)  ///
+yline(50) xline(50) ///
+legend(rows(1) label(1 "Supporters") label(2 "Regular partisans") label(3 "Fans")) ///
+name(scatter_groups, replace))
 
-graph combine lfit_groups scatter_groups
+// graph combine lfit_groups scatter_groups
 
+********************************************************************************
+******* Relationship between API and positive vs negative partisanship *********
+********************************************************************************
+
+// gsort -AP_index2
+// br AP_index2 positive_partisanship negative_partisanship
+//
+// tw scatter AP_index2 positive_partisanship, mcolor(green) name(pos, replace)
+// scatter AP_index2 negative_partisanship, mcolor(red) name(neg,replace)
+//
+// graph combine pos neg
+//
+// tw (lfit AP_index2 positive_partisanship, lcolor(green)) (lfit AP_index2 negative_partisanship, lcolor(red))
+
+********************************************************************************
 
 // tw (scatter positive_partisanship negative_partisanship if party_id==1, xline(50) yline(50) mcolor(green)) (scatter positive_partisanship negative_partisanship if party_id==2,  mcolor(blue))
 // graph combine G3 G1 G2 G4, rows(2)

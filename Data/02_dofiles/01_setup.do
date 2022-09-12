@@ -246,18 +246,37 @@ gen `x'_standard_share = `x'_share/total_share
 	
 	la var AP_index2 "AP index"
 
+
+	
 	
 ** POSITIVE VS NEGATIVE PARTISANSHIP
 
+// gen positive_partisanship = sqrt(psoe_pol2 + up_pol2) if ! partid
+// gen negative_partisanship = sqrt(pp_pol2 + cs_pol2 + vox_pol2) if ! partid
 
-gen positive_partisanship = sqrt(psoe_pol2 + up_pol2)
-la var positive_partisanship "In-group feelings"
-recode positive_partisanship 0 = . if pp_alt  == 0 & psoe_alt == 0 & up_alt == 0 ///
+egen in_aff = rowmean(feel_psoe_voters feel_up_voters)
+egen out_aff = rowmean(feel_pp_voters feel_cs_voters feel_vox_voters)
+
+gen positive_partisanship = in_aff if ! partid
+gen negative_partisanship = 100 - out_aff if ! partid
+
+replace positive_partisanship = out_aff if partid
+replace negative_partisanship = 100 - in_aff if partid
+
+gen AP_index3 = sqrt(positive_partisanship^2 + negative_partisanship^2)
+gen final = AP_index3/141.4214
+gsort -AP_index3
+
+br id AP_index3 positive_partisanship negative_partisanship partid final
+// replace positive_partisanship = sqrt(pp_pol2 + cs_pol2 + vox_pol2)  if partid
+// replace negative_partisanship = sqrt(psoe_pol2 + up_pol2) if partid
+
+la var positive_partisanship "Positive partisanship"
+la var negative_partisanship "Negative partisanship"
+
+recode positive_partisanship 100 = . if pp_alt  == 0 & psoe_alt == 0 & up_alt == 0 ///
 	& cs_alt == 0 & vox_alt == 0
-	
-gen negative_partisanship = sqrt(pp_pol2 + cs_pol2 + vox_pol2 )
-la var negative_partisanship "Out-group feelings"
-recode negative_partisanship 0 = . if pp_alt  == 0 & psoe_alt == 0 & up_alt == 0 ///
+recode negative_partisanship 100 = . if pp_alt  == 0 & psoe_alt == 0 & up_alt == 0 ///
 	& cs_alt == 0 & vox_alt == 0
 
 * AP dummy
@@ -280,14 +299,14 @@ la var AP_index_dummy "AP index (dichotomous)"
 // recode AP_index (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups)
 // la var groups "Groups of voters"
 
-sum AP_index2
+sum final if government
 
 local m=r(mean)
 local sd=r(sd)
 local low = `m'-`sd'
 local high=`m'+`sd'
-recode AP_index2 (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups)
-la var groups "Groups of voters2"
+recode final (0/`low' = 0 "Supporters") (`low'/`high' = 1 "Partisans") (`high'/max = 2 "Fans") ,into(groups)
+la var groups "Groups of voters"
 
 
 save Data/03_temp/data.dta, replace

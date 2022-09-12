@@ -17,7 +17,7 @@ set scheme tufte, perm
 set autotabgraphs on, perm  
 
 * Set working directory to the root folder:
-cap global projectdir "C:\Users\Rodrigo\Documents\programming\TFM"
+cap global projectdir "C:\Users\Rodrigo\Desktop\TFM"
 
 cd $projectdir
 
@@ -26,9 +26,10 @@ do Data/02_dofiles/04_models.do
 do Data/02_dofiles/03_graphs.do 
 
 
-hist AP_index , name(G1)
-hist AP_index2, name(G2)
-graph combine G1 G2
+hist AP_index , name(G1,replace)
+hist AP_index2, name(G2,replace)
+hist final, name(G3,replace)
+graph combine G1 G2 G3
 
 // reg spanish_econ_assessment i.partid if AP_index_dummy
 // help reg
