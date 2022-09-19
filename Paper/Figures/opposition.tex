@@ -1,0 +1,28 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{5}{c}}
+\toprule
+                &\multicolumn{5}{c}{Likelihood of voting for the incumbent}                                    \\\cmidrule(lr){2-6}
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         &\multicolumn{1}{c}{(4)}         &\multicolumn{1}{c}{(5)}         \\
+\midrule
+Economic assessment (ref.: Worse)&                  &                  &                  &                  &                  \\
+Better          &    3.270\sym{**} &    3.025\sym{**} &    2.130         &    2.853\sym{*}  &    2.649         \\
+                &   (2.93)         &   (2.67)         &   (1.27)         &   (2.47)         &   (1.27)         \\
+Affective Polarization Index&                  &    0.819\sym{***}&    0.800\sym{***}&                  &                  \\
+                &                  &  (-5.01)         &  (-3.50)         &                  &                  \\
+Better $\times$ Affective Polarization Index&                  &                  &    1.089         &                  &                  \\
+                &                  &                  &   (0.83)         &                  &                  \\
+Wagner's (2021) WAP index&                  &                  &                  &    0.972\sym{**} &    0.974         \\
+                &                  &                  &                  &  (-2.61)         &  (-1.56)         \\
+Better $\times$ Wagner's (2021) WAP index&                  &                  &                  &                  &    1.004         \\
+                &                  &                  &                  &                  &   (0.12)         \\
+\midrule
+Pseudo \(R^{2}\)&    0.096         &    0.175         &    0.176         &    0.106         &    0.107         \\
+Observations    &      981         &      980         &      980         &      967         &      967         \\
+\bottomrule
+\multicolumn{6}{l}{\footnotesize Exponentiated coefficients; \textit{t} statistics in parentheses}\\
+\multicolumn{6}{l}{\footnotesize NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status,}\\
+\multicolumn{6}{l}{\footnotesize education, occupation, income and religious feeling. They are excluded from the table for clarity.}\\
+\multicolumn{6}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}

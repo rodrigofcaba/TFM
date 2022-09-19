@@ -7,25 +7,37 @@
 \usepackage{graphicx}
 \usepackage[colorinlistoftodos]{todonotes}
 \usepackage{sectsty}
-\usepackage{float}
 \usepackage{natbib}
 \usepackage{url}
 \usepackage[colorlinks]{hyperref}
 \usepackage{xcolor}
-\usepackage{amsmath}
+\definecolor{azulUC3M}{RGB}{0,0,102}
+\definecolor{gray97}{gray}{.97}
+\definecolor{gray75}{gray}{.75}
+\definecolor{gray45}{gray}{.45}
+
+\usepackage{hyperref}
+
 \usepackage{longtable}
 \setlength\LTcapwidth{\textwidth}
 \usepackage{pdflscape}
 \usepackage{booktabs}
 \usepackage{afterpage}
+
 \usepackage[bottom]{footmisc}
+\usepackage{caption, subcaption}
 \usepackage{tikz}
 \usepackage{multirow}
 \usepackage{enumitem}
 \usepackage{bibspacing}
 \setlength{\bibitemsep}{0\baselineskip plus .05\baselineskip minus .05\baselineskip}
-\usepackage{rotating, float, placeins}
+\usepackage{rotating, placeins, floatrow}
+\usepackage{tablefootnote}
 \usepackage{threeparttable}
+\usepackage{pifont}
+\floatsetup[table]{capposition=top}
+\floatsetup[figure]{capposition=top}
+
 \widowpenalty10000
 \clubpenalty10000
 
@@ -47,42 +59,157 @@
 \newcommand{\citeposs}[1]{\citeauthor{#1}'s \citeyearpar{#1}}
 \newcommand{\citepos}[1]{\citeauthor{#1}' \citeyearpar{#1}}
 
-\title{\vspace{-40pt}\textbf{The consequences of affective polarization\\ \Large Is accountability still working?}}
-\author{Rodrigo Fernández Caba}
-\date{\vspace{-5pt} July, 2022}
+
+% \title{\vspace{-40pt}\textbf{The consequences of affective polarization\\ \Large Is accountability still working?}}
+% \author{Rodrigo Fernández Caba}
+% \date{\vspace{-5pt} July, 2022}
 
 \begin{document}
-\maketitle
+\pagenumbering{roman}
+
+\begin{titlepage}
+	\begin{sffamily}
+		\color{azulUC3M}
+		\begin{center}
+			\begin{figure}[H] % UC3M Logo
+				\makebox[\textwidth][c]{\includegraphics[width=16cm]{logo_UC3M.png}}
+			\end{figure}
+			\vspace{2.5cm}
+			\begin{Large}
+				Master Degree in Social Sciences\\
+				2021-2022\\ % Academic year
+				\vspace{2cm}
+				\textsl{Master Thesis}
+				\bigskip
+
+			\end{Large}
+			\renewcommand{\baselinestretch}{1.5}
+			{\Huge ``The consequences of affective polarization: Is accountability still working?"\par}
+			\renewcommand{\baselinestretch}{1.15}
+			\vspace*{0.5cm}
+			\rule{10.5cm}{0.1mm}\\
+			\vspace*{0.9cm}
+			{\huge Rodrigo Fernández Caba}\\
+			\vspace*{1cm}
+			\begin{LARGE}
+				Tutor: Sandra León Alfonso\\
+				\textit{Madrid, 20 September 2022}\\
+			\end{LARGE}
+		\end{center}
+		\vfill
+		\color{black}
+		% IF OUR WORK IS TO BE PUBLISHED UNDER A CREATIVE COMMONS LICENSE, INCLUDE THESE LINES. IS THE RECOMMENDED OPTION.
+		\noindent\includegraphics[width=4.2cm]{creativecommons.png}\\ % Creative Commons Logo
+		\footnotesize{This work is licensed under Creative Commons \textbf{Attribution – Non Commercial – Non Derivatives}}
+
+	\end{sffamily}
+\end{titlepage}
+
+
+\thispagestyle{empty}% blank page
+\mbox{ }
+\newpage
+
+\thispagestyle{empty}% blank page
+\mbox{ }
+\newpage
 
 \begin{abstract}
+	\setcounter{page}{3}
 	Affective polarization has become the political phenomenon of the moment. Although specially American scholars have studied thoroughly its causes, less effort has been devoted to explain its consequences. In order to do so, I propose a causal mechanism through which affective polarization impacts political attitudes. By a process of motivated reasoning, more polarized people are expected to a) assess incumbent's performances worse, b) form political preferences (i.e. public policy choice) in a perhaps pernicious way for them, and c) be less supportive in general for incumbent's measures (specially during times of crisis). In this paper, I propose to test empirically the first of these effects, namely, the impact of affective polarization on economic voting. My hypothesis is that those who are more polarized will be less rational or, in other words, they will be less able to reward or punish the incumbent according to economic events. Hence, this paper tries to make a contribution to our knowledge of affective polarization and speaks to the general problem of accountability in our contemporary polarized societies.
-\end{abstract}
 
+	\textbf{Keywords: Affective Polarization, positive partisanship, negative partisanship, economic voting, political psychology, motivated reasoning.}
+	\vfill
+\end{abstract}
+\newpage % Blank page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+%----------
+%	Dedication
+%----------	
+\section*{Dedicatoria}
+\setcounter{page}{5}
+
+A mis padres, a mi familia, a mis compañerxs, a mis profesorxs y a todas las personas que defienden los servicios públicos, gratuitos, y de calidad.
+
+Pero sobre todo a mis amigas. Por estar voluntariamente a mi lado. Por escucharme y por contarme. Por motivarme, por ayudarme, por sostenerme, y por lanzarme hacia delante. Por enseñarme que merecía más. Por reconocerme cuando no he podido. Por hacerme reinterpretar lo que significa querer y ser queridx.
+
+\textit{Por enseñarme lo que es la vida. A Puig, Linares, Ceci, Rodri, Julia, y Clara.}
+
+\text{ }
+
+\begin{flushright}
+	\textit{No sé res però m'ho vull creure, que al final sé decidir.}
+
+	\textit{Si en el fons som la veritat de tot el que ens ha passat,}
+
+	\textit{som la sort de seguir aquí.}
+
+	La gent que estimo – Oques Grasses \&. Rita Payés
+\end{flushright}
+
+
+
+\vfill
+\newpage % blank page
+\thispagestyle{empty}
+\mbox{}
+\newpage
+
+\tableofcontents
+% \thispagestyle{fancy}
+
+\newpage % blank page
+\thispagestyle{empty}
+\mbox{}
+
+\newpage
+\listoffigures
+% \thispagestyle{fancy}
+
+\newpage % blank page
+\thispagestyle{empty}
+\mbox{}
+
+
+\listoftables
+% \thispagestyle{fancy}
+
+\newpage % blankpage
+\thispagestyle{empty}
+\mbox{}
+
+\clearpage
+\pagenumbering{arabic}
 
 \section{Introduction}
 
-Some scholars have recently pointed out that American people are far more polarized than 40 years ago \citep{Lelkes2018}. Since the seminal piece of work by \cite{Iyengar2012} we know that political polarization is not only related to ideology but also to affects. Inter-party animosity has been increasing at least since the 1980s in American politics. Nonetheless, some others have shown that United States is by no means the most polarized nation around the world. From a comparative perspective, (\citeauthor{Gidron2018} \citeyear{Gidron2018} and \citeyear{Gidron2019}, and \cite{WESTWOOD2018}) (see Figure \ref{fig:af-pol-comp}) have pointed out that whereas Americans display just average levels of affective polarization, in Europe, we find much higher levels, for instance, in countries like Spain, Greece or even France. The ugly discourse surrounding recent elections in the US, the Brexit campaign, or the regional elections in Community of Madrid (Spain) on may 2019, held in a frame with only two apparent options `Communism or Freedom', are just some examples of the increasingly divisive political discourse of our times. What we call affective polarization is, loosely speaking, the phenomenon that voters like their political co-partisans and, usually at the same time, they dislike their political opponents, that is, they see themselves belonging to an in-group and therefore, they dislike (or sometimes even hate) the out-group members.
+Some scholars have recently pointed out that American people are far more polarized than 40 years ago \citep{Lelkes2018}. Since the seminal piece of work by \cite{Iyengar2012} we know that political polarization is not only related to ideology but also to affects. Inter-party animosity has been increasing at least since the 1980s in American politics. Nonetheless, some others have shown that United States is by no means the most polarized nation around the world. From a comparative perspective, (\citeauthor{Gidron2018} \citeyear{Gidron2018} and \citeyear{Gidron2019}, and \cite{WESTWOOD2018}) (see Figure \ref{fig:af-pol-comp}) have pointed out that whereas Americans display just average levels of affective polarization, in Europe, we find much higher levels, for instance, in countries like Spain, Greece or even France. The ugly discourse surrounding recent elections in the US \citep*{AmericaUglyElection}, the Brexit campaign, or the regional elections in Community of Madrid (Spain) on may 2019, held in a frame with only two apparent options `Communism or Freedom' \citep*{elconfindencialComunismoLibertadIsabel2021}, are just some examples of the increasingly divisive political discourse of our times. What we call affective polarization is, loosely speaking, the phenomenon that voters like their political co-partisans and, usually at the same time, they dislike their political opponents, that is, they see themselves belonging to an in-group and therefore, they dislike (or sometimes even hate) the out-group members.
 
-\begin{figure}
+\begin{figure}[H]
 	\centering
+	\caption{Levels of affective polarization across countries.}
 	\includegraphics[scale=.7]{figure1.png}
-	\caption{\label{fig:af-pol-comp} Levels of affective polarization across countries. Source: \cite{Gidron2018}}
+	\label{fig:af-pol-comp}
+	\floatfoot{\footnotesize \textbf{Source}: \cite{Gidron2018} }
 \end{figure}
 
 Affective polarization has been well-documented since 2012 --specially regarding its causes--, at least in the US \citep{Hetherington2015,Rogowski2016a, Webster2017,Lelkes2018,Iyengar2019, Klein2020}. However, scholars in Europe --and also in Spain-- have only started to focus on this issue recently, although as \cite{Miller2019} points out, the prominence of the concept makes it the ``political phenomenon of the moment". Moreover, little effort has been made investigating the consequences of the phenomenon. Perhaps, the reason behind the lack of studies focused on the consequences of affective polarization is related to poor data (that is the case of Spain), or that's simply because it is a very complex phenomenon that depending on the country can be very correlated with simple ideological polarization and other similar phenomena, making it difficult to disentangle its effects. Others have even suggested that affective polarization does not have such political consequences \citep*{broockmanDoesAffectivePolarization2020}, and hence, there is no reason to explore them. However, some facts point towards the opposite direction and we have already measured the increasing levels of polarization. For example, we already know that 2008 financial crisis had a great impact on the european party systems. In some places like Spain, after more than two decades of stable bipartidism, a multiparty system emerged. This increase in the number of parties confronting in parliament happened after a sharp increase of affective polarization which, in the case of Spain, has ended up leading spanish people to polarize even more in two big blocks of parties \citep{Orriols2020}.
 
-The majority of studies addressing this question points out that high levels of affective polarization could be dangerous for democracy. Scholars usually argue that it makes democracy work worse although they do not usually test in which way. This lack of theoretical contributions leading towards empirical ways of looking for the consequences of affective polarization is what mainly inspire this work. Some exceptions are worth noting, though: \cite{Wagner2021} finds that affective polarization has an impact on democratic values. Specifically, he finds a negative effect on satisfaction with democracy. Similarly, \cite{Ward2019} find that affective polarization affects perceptions of political choice as well as turnout and participation. But taking these exceptions aside, most of the comments in the literature so far are closer to be intuitions than proper empirical findings. For instance, there is a common intuition in the literature that polarized citizens are less able to collaborate and to work together to solve collective action problems \citep{Garrett2014}. Citizens' trust in political institutions and legitimacy of governments might also be negatively affected \citep{Orriols2021}. In the same vein, affective polarization can also foster political radicalism \citep{Levendusky2013, Rogowski2016a, Webster2017} since the dynamics of polarized politics makes the radicals more prone to speak and, at the same time, it makes polarized --but less radical-- people, more prone to follow the former. There is also a concern regarding satisfaction with democracy, electoral participation, and a long list of attitudes towards western liberal electoral democracy. However, most of those are just intuitions or ideas derived from the analysis of the causes of affective polarization, and since almost none of those pernicious effects of affective polarization have been \textbf{empirically} tested, this study tries to first ask if any of those suggested political consequences are playing a role in electoral terms and if so, how does affective polarization really operates. Specifically, in this paper I focus in which is arguably the most concerning of all possible consequences in electoral terms, that is, to what extent accountability mechanisms are affected by this phenomenon, hence I explore its relationship with economic voting and attribution of responsibility.
+The majority of studies addressing this question points out that high levels of affective polarization could be dangerous for democracy. Scholars usually argue that it makes democracy work worse although they do not usually test in which way. This lack of theoretical contributions leading towards empirical ways of looking for the consequences of affective polarization is what mainly inspire this work. Some exceptions are worth noting, though: \cite{Wagner2021} finds that affective polarization has an impact on democratic values. Specifically, he finds a negative effect on satisfaction with democracy. Similarly, \cite{Ward2019} find that affective polarization affects perceptions of political choice as well as turnout and participation. But taking these exceptions aside, most of the comments in the literature so far are closer to be intuitions than proper empirical findings. For instance, there is a common intuition in the literature that polarized citizens are less able to collaborate and to work together to solve collective action problems \citep{Garrett2014}. Citizens' trust in political institutions and legitimacy of governments might also be negatively affected \citep{Orriols2021}. In the same vein, affective polarization can also foster political radicalism \citep{Levendusky2013, Rogowski2016a, Webster2017} since the dynamics of polarized politics makes the radicals more prone to speak and, at the same time, it makes polarized --but less radical-- people, more prone to follow the former. There is also a concern regarding satisfaction with democracy, electoral participation, and a long list of attitudes towards western liberal electoral democracy. However, most of those are just intuitions or ideas derived from the analysis of the causes of affective polarization, and since almost none of those pernicious effects of affective polarization have been \textbf{empirically} tested, this study tries to first ask if any of those suggested political consequences are playing a role in electoral terms and if so, how does affective polarization really operates. Specifically, in this paper I focus in which is arguably the most concerning of all possible consequences in electoral terms, that is, to what extent accountability mechanisms are affected by this phenomenon, hence I explore the potential relationship between affective polarization, economic voting and attribution of responsibility.
 
-The general argument is that affective polarization makes people assess political phenomena --and also non-political phenomena-- using their own `political glasses'. Hence, they are less permeable to political information and political cues, or in other words, they are less prone to process political information from a critical standpoint. We already know that partisanship impacts the way in which people hold incumbents accountable \citet*{tilleyGovernmentBlameExperimental2011a}. The fact that people feel very attached to a certain party, has been proved to bring this kind of polarization, however, when polarization is based not only on the identification with a party but also on affects and especially on the animosity towards the out-group (as I will explain below), these already known effects might, I argue, be even more pronounced and, consequently, worse for democracy. 
+The general argument is that affective polarization makes people assess political phenomena --and also non-political phenomena-- using their own `political glasses'. Hence, they are less permeable to political information and political cues, or in other words, they are less prone to process political information from a critical standpoint. We already know that partisanship impacts the way in which people hold incumbents accountable \citet*{tilleyGovernmentBlameExperimental2011a}. The fact that people feel very attached to a certain party, has been proved to bring this kind of polarization, however, when polarization is based not only on the identification with a party but also on affects and especially on the animosity towards the out-group (as I will explain below), these already known effects might, I argue, be even more pronounced and, consequently, worse for democracy.
 
 As I will develop in subsequent sections, the basic idea is that our own political (partisan) biases, are exacerbated when we identify an (social) in-group to which we belong, and an (social) out-group that we see as totally opposed to us, that is, political militancy turns into identity. This situation reduces our critical assessment of political --and non-political-- phenomena, or more precisely, it makes us use this assessment (correct or not and based on relatively objective information) to a lesser extent when it comes to hold incumbents accountable. In short, affective polarization would make people use their assessment of the economy in such a way that they avoid punish their in-group and/or they punish their out-group harder than economic situation might predict.
 
-Hence, the goal of this study is twofold: first, I propose a theoretical mechanism that explains why affective polarization has negative effects on the democratic process, specifically on the degree to which people is able to hold incumbents accountable according to economic performance and I test it empirically. And second, I explore the dynamics of positive and negative partisanship, the constituents of affective polarization in Spain during crucial political times. According to the argument, we should see polarized people unable to reward or punish incumbents according to economic performance, that is, we should observe that accountability does not work properly. The remaining of this study proceed as follows: first I present my argument discussing the relevant literature on affective polarization and economic voting. Second, I present my data and experimental design. In a subsequent section I discuss the main results. Finally, I conclude.
+Hence, the goal of this study is twofold: first, I propose a theoretical mechanism that explains why affective polarization has negative effects on the democratic process, namely, on the degree to which people is able to hold incumbents accountable according to economic performance and I test it empirically. And second, I explore the dynamics of positive and negative partisanship, the constituents of affective polarization in Spain during crucial political times. According to the argument, we should see polarized people unable to reward or punish incumbents according to economic performance, that is, we should observe that accountability does not work properly. The remaining of this study proceed as follows: first I present my argument discussing the relevant literature on affective polarization and economic voting. Second, I present my data and experimental design. In a subsequent section I discuss the main results. Finally, I conclude.
 
-\section{Understanding affective polarization}
+\section{What do we know about affective polarization?}
 \label{affective polarization}
 
-Affective polarization is a fairly new field of research. The concept relates to the fact that citizens feel sympathy towards a partisan in-group and antagonism towards a partisan out-group \citep{Wagner2021}. Regardless of its novelty, it has been largely studied in the US. After the work of \cite{Iyengar2012} came out, a lot of different aspects of this phenomenon have been empirically tested in many different countries. However, the vast majority of the literature has focused on the causes, and only a few instances have said something abut its consequences. Also, given the salience of the topic in American politics, scholars have measured affective polarization \footnote{To see a more in depth discussion on the concern about how to measure affective polarization see \cite{Druckman2019}} mostly in the arguably most straightforward case, the american two-party system \citep{Wagner2021}. However, some authors have recently tried to fill this gap and they have proposed new ways of measuring it in multi-party systems \citep{Reiljan2020}. Moreover, affective polarization is usually addressed at the aggregate level, that is, as the average affective polarization of the political system. Nonetheless, it can also be studied from an individual perspective, since in the end, each individual has a level of affect (or disaffect) for these in-group and out-group members. \citep{Wagner2021}.
+Affective polarization is a fairly new field of research. The concept relates to the fact that citizens feel sympathy towards a partisan in-group and antagonism towards a partisan out-group \citep{Wagner2021}. Regardless of its novelty, it has been largely studied in the US. After the work of \cite{Iyengar2012} came out, a lot of different aspects of this phenomenon have been empirically tested in many different countries. However, the vast majority of the literature has focused on the causes, and only a few instances have said something abut its consequences. Also, given the salience of the topic in American politics, scholars have measured affective polarization\footnote{To see a more in depth discussion on the concern about how to measure affective polarization see \cite{Druckman2019}} mostly in the arguably most straightforward case, the american two-party system \citep{Wagner2021}. However, some authors have recently tried to fill this gap and they have proposed new ways of measuring it in multi-party systems \citep{Reiljan2020}. Moreover, affective polarization is usually addressed at the aggregate level, that is, as the average affective polarization of the political system. Nonetheless, it can also be studied from an individual perspective, since in the end, each individual has a level of affect (or disaffect) for these in-group and out-group members. \citep{Wagner2021}.
 
 So far, we know that affective polarization is more complex that one might think at first glance. It is neither ideological polarization (although correlation is high in certain contexts), nor party identification (although this is an essential part of it). It is rather something related to social identity. Therefore, it is rooted in political psychology and more precisely in social identity theory \citep{Tajfel1979}. From this standpoint, affective polarization relates to the belonging sentiment to certain social groups. Although it can be the case that belonging to a social group is a matter of ideology, affective polarization is not exactly the same as ideological polarization since specially in a multiparty context, people who belong to the same part of the ideological spectrum can have different in- and out-groups for different reasons. In fact, as some scholarship has shown, in some settings affective polarization can increase while ideological divisions shrink \citep{Levendusky2016, Iyengar2019}. Nonetheless, some other scholarship has shown that ideological polarization somehow impacts affective polarization \citep{Rogowski2016a, Webster2017}.
 
@@ -98,24 +225,26 @@ However, some scholarship has already pointed out that economic voting is influe
 
 According to this literature, we shouldn't look at the relation between vote and economy isolated, but accounting for contextual factors. As \citet[p. 1]{Singer2015} point out, ``there is still a debate about whether voters focus on past or future performance and whether they view the economy in primarily sociotropic or egotropic terms". They find that prospective voting predominates early in the election cycle and retrospective voting gains traction as people observe incumbent's performance. Moreover, they also find that sociotropic views predominates over the egotropic ones except for the least developed countries. In the same vein, in a provocative paper, \cite[p. 1]{Anderson2007} argues that economic voting does not work as `envisioned by advocates of democratic accountability'. He  calls for a reconsideration of the normative underpinnings of economic voting paradigm in light of recent evidence. His argument is that although the findings supporting empirically the theory enumerated above exist, they are contingent for both institutional and psychological reasons. Precisely building on that argument, I try to disentangle both potential reasons in this study and I focus specifically on the latter. That is, as suggested above, although economic voting works in general, it can fail under certain circumstances, I argue that a context with high levels of affective polarization --through psychological biases-- is one of those.
 
-The core empirical assumption of the economic voting theory still holds: it is more likely to find people voting retrospectively than prospectively. Only when people observe incumbent's performance they start thinking in voting in prospective terms. As I would argue in the next section more in depth, it is reasonable to expect that retrospective voting (and economic voting in general) work worse as people are more polarized. This is to say that as people become more affectively polarized they use the economy to a lesser extent in order to make an electoral decision. The idea behind this rationale follows the logic proposed by \citet*{tilleyGovernmentBlameExperimental2011a} when analyzing the role played by partisan bias when assessing public policy. Partisan biases might impact either the assessment of the economy the individual makes, how she attributes responsibility or even both. These two things, however, yield different models of electoral accountability and have different consequences.
+The core empirical assumption of the economic voting theory still holds: it is more likely to find people voting retrospectively than prospectively. Only when people observe incumbent's performance they start thinking of voting in prospective terms. As I would argue in the next section more in depth, it is reasonable to expect that retrospective voting (and economic voting in general) work worse as people are more polarized. This is to say that as people become more affectively polarized they use the economy to a lesser extent in order to make an electoral decision. The idea behind this rationale follows the logic proposed by \citet*{tilleyGovernmentBlameExperimental2011a} when analyzing the role played by partisan bias when assessing public policy. Partisan biases might impact either the assessment of the economy the individual makes, how she attributes responsibility or even both. These two things, however, yield different models of electoral accountability and have different consequences.
 
 Their general theory suggests two (non-exclusionary) possibilities. On the one hand, people could be less able to assess the state of the economy and hence, they will vote according to a biased assessment. That means that they are rational enough as to vote according to their assessment, so \textit{stricto sensu} the economic voting mechanism would work as expected; it is rather their evaluation of the economy what is wrong, that is, contrary to objective markers. They would ignore objective economic data to avoid punishing the incumbent. On the other hand, they could correctly assess the economy but --trying to minimize the subsequent cognitive dissonance-- they attribute responsibility in a partisan way. That is, they evaluate the economy according to objective economic parameters but exonerate the government if it belongs to their party. The former is known as the \textbf{selective evaluation} model whereas the latter is known as the \textbf{selective attribution} model. According to the theory I propose here, the latter is thought to be playing a prominent role. It is not that polarized people assess the economy wrongly but rather that even when they evaluate the economy correctly, the more polarized they are, the less important the economy is in their final decision.
 
 This --I argue-- should be especially true and clear for the case of incumbent supporters. The fact that elections are used as a mechanism of accountability makes us expect people to punish or reward incumbents according to the state of the economy (basic economic voting mechanism). However, the more affectively polarized people is, the harder it is for them to punish the incumbent when it belongs to their in-group. Simply because affective polarization is linked to social identity, people would exonerate to a larger extent the incumbent if they think the economy goes bad, usually attributing responsibility in a wrong or, at least, biased way. I expect to see voters to use some other strategies and shortcuts in order to maximize their utility, so polarized individuals should avoid to a larger extent the use of information to make their final decision and cast their votes.
+\newpage
 
 \section{Argument}
 
-Once I have presented the most relevant literature to understand affective polarization and economic voting, the linking nexus must be analyzed. I argue that affective polarization has a direct effect on political attitudes, more specifically on the extent to which individuals use new performance information to ultimately cast their votes, because it activates a process of motivated reasoning (see Figure \ref{fig:model}). This effect is similar in essence to the already known partisan bias present in  \citet*{tilleyGovernmentBlameExperimental2011a}'s models of accountability. However, I think that it is not only partisan identification but also polarization --and specifically polarization based on affects-- what may impact the extent to which economic voting works. These two things are not the same as suggested above basically because polarization may be caused due to good feelings towards the in-group (positive partisanship) but also negative feelings towards the out-group (negative partisanship). Moreover, in multiparty settings like Spain, these groups do not coincide necessarily with only one party each, what makes the effect if it exists, even more important than suggested in the models by \citet*{tilleyGovernmentBlameExperimental2011a}.
+\label{section:theory}
+The theory I propose in what follows has two main goals. First, to inquiry if there is a relationship between affective polarization and economic voting and second, to explore the dynamics of affective polarization studying its constituent components. Once I have presented the most relevant literature to understand affective polarization and economic voting, the linking nexus must be analyzed. I argue that affective polarization has a direct effect on political attitudes, more specifically on the extent to which individuals use new performance information to ultimately cast their votes. The reason I suggest is that it activates a process of motivated reasoning (see Figure \ref{fig:model}). This effect is similar in essence to the already known partisan bias present in  \citet*{tilleyGovernmentBlameExperimental2011a}'s models of accountability. However, I think that it is not only partisan identification but also polarization --and specifically polarization based on affects-- what may impact the extent to which economic voting works. These two things are not the same as suggested above basically because polarization may be caused due to good feelings towards the in-group (positive partisanship) but also negative feelings towards the out-group (negative partisanship)\footnote{Positive and especially negative partisanship are commonly used as something someone does have or doesn't have. Someone has a negative partisanship if she identifies a certain party or group of parties she would never vote for. Conversely, she would have positive partisanship if she has a partisan identification or a preferred party. However, here I use it to designate the animosity an individual has towards groups of parties, hence, everyone has a certain amount of positive and negative partisanship regardless of this person's vote intention.}. Moreover, in multiparty settings like Spain, these groups do not coincide necessarily with only one party each, what makes the effect if it exists, even more important than suggested in the models by \citet*{tilleyGovernmentBlameExperimental2011a}.
 
-The basic idea is that even when citizens might correctly assess the state of the economy, they will avoid to punish their in-group --and consequently the incumbent-- electorally. In other words, the state of the economy or government performance becomes less important for those supporting the incumbent the more polarized they are. They become more inelastic to economic (or performance-based more in general) information. Although the theory affects everyone voting, in order to empirically test my theoretical expectations we restrict to incumbent supporters from this point on. This is basically because I am interested in an accountability mechanism which is mainly related to those who being incumbentw supporters eventually might either reward or punish it.
+The basic idea is that even when citizens (in this example consider potential incumbent voters) might correctly assess the state of the economy, they will avoid to punish their in-group --and consequently the incumbent-- electorally. In other words, the state of the economy or government performance becomes less important for those supporting the incumbent the more polarized they are. They become more inelastic to economic (or performance-based more in general) information. The theory affects everyone voting, however, it is easier to think my hypotheses in order to empirically test them if we restrict ourselves to incumbent supporters. This is because I am interested in an accountability mechanism which is mainly related to those who being incumbent supporters eventually might either reward or punish it. Moreover, including all the electorate in the analysis at the same time makes polarization effects very difficult to be interpreted since --in principle-- incumbent supporters and opposition supporters define their in-group/out-group in --to a large extent-- opposite way (specially in Spain as suggested by \citet*{Orriols2020}), what makes polarization to go in opposite directions for each group of people. Nonetheless, the reader will find in the results section a subsection dedicated to each group of voters for the sake of completeness. Let us turn to discuss the three main parts of the theory I propose in the next sections.
 
 \begin{figure}[H]
 	\centering
 	\begin{tikzpicture}
 		\node  (0) at (-5, 0) {Affective Polarization};
 		\node  (1) at (0, 0) {Motivated Reasoning};
-		\node  (2) at (5.5, 0) {Less economic voting};
+		\node  (2) at (5, 0) {Less economic voting};
 
 		\draw [style=basic arrow] (0) to (1);
 		\draw [style=basic arrow] (1) to (2);
@@ -126,7 +255,7 @@ The basic idea is that even when citizens might correctly assess the state of th
 
 \subsection{Motivated reasoning}
 
-Motivated reasoning is usually studied in cognitive science and social psychology and refers to the fact that some people use emotionally biased reasoning to produce justifications (or make decisions) that are most desired rather than those that accurately reflect the evidence \citep{Kunda1990}. In my setting, this is reflected by the fact that `affectively' polarized people are so according to their emotions, that is, to the level of animosity against both the in-group and the out-group. They would use motivated reasoning to avoid being at odds with their in-group. They would prefer to be `loyal' to their in-group than to punish them if economic situation goes bad. Or the other way around, they would avoid rewarding their out-group when economic performance was good. In other words, those more polarized are expected to use motivated reasoning to a larger extent and hence, would be less able to process (i.e. evaluate) and integrate political (or economic) information. They will be less willing to hold their party accountable for policy performance. That is, this motivated reasoning would lead them to vote in a less rational way, or in other words, accountability based on economic voting will work worse. It is reasonable to expect partisans to undermine rather than promote responsible government.
+Motivated reasoning is usually studied in cognitive science and social psychology and refers to the fact that some people use emotionally biased reasoning to produce justifications (or make decisions) that are most desired rather than those that accurately reflect the evidence \citep{Kunda1990}. In my setting, this is reflected by the fact that `affectively' polarized people are so according to their emotions, that is, to the level of animosity against both the in-group and the out-group. They would use motivated reasoning to avoid being at odds with their in-group. They would prefer to be `loyal' to their in-group than to punish them if economic situation is bad. Or the other way around, they would avoid rewarding their out-group when economic performance was good. In other words, those more polarized are expected to use motivated reasoning to a larger extent and hence, would be less able to process (i.e. evaluate) and integrate political (or economic) information. They will be less willing to hold their party accountable for policy performance. This motivated reasoning would lead them to vote in a less rational way or, in other words, accountability based on economic voting will work worse, what --I believe-- rises a concern as it is reasonable to expect partisans to undermine rather than promote responsible government.
 
 As suggested by many scholars \citep{Taber2006, Boyer}, reasoning seems to play a crucial role in the formation of political attitudes. Citizens are not only motivated in the sense of holding \textit{accurate} beliefs, but also ``\textit{directional} motivations, or motivations to reach a certain predetermined belief" \citep[p.2]{Boyer}. Such directional motivations are, according to \cite[p. 440]{Kunda1990}, ``any wish, desire or preference that concerns the outcome of a given reasoning task". In order to better understand the underpinnings of the process by which polarized people activate a motivated reasoning process, it is interesting to discuss the different effects that positive and negative partisanship may have.
 
@@ -134,65 +263,110 @@ If we look at the characterization of motivated reasoning proposed by \cite{Thal
 
 \subsection{Elasticity}
 
-I introduce now the concept of elasticity to try to shed light on the economic voting part of the argument. I use the term elasticity to refer to the extent to which people is permeable to political information. According to my argument, polarized people are, in general, less permeable to political information, specially when this information is at odds with their prior beliefs. This is to say --in bayesian terms-- that they (almost) do not update their priors. Moreover, I argue that when political polarization is not only about policy choice, but also related to affects, (lacking) permeability turns into (lacking) elasticity. These two concepts may look the same at first glance but it is not only a matter of nouns. I use elasticity instead of permeability because I characterize the relationship between economic assessment and accountability as either elastic or inelastic in the following sense: if someone is able to properly assess the state of the economy (according to objective economic markers) the fact that this individual uses this evaluation to either punish or reward the incumbent is what makes her more or less elastic. If they update their beliefs according to their evaluation and vote accordingly, they are elastic. Conversely, if they do not use their evaluation in order to cast their votes, they are inelastic to performance-based information.
+I introduce now the concept of elasticity to try to shed light on the economic voting part of the argument. I use the term elasticity to refer to the extent to which people is permeable to political information. According to my argument, polarized people are, in general, less permeable to political information, specially when this information is at odds with their prior beliefs. This is to say --in bayesian terms-- that they (almost) do not update their priors. Moreover, I argue that when political polarization is not only about policy choice, but also related to affects, (lacking) permeability turns into (lacking) elasticity. These two concepts may look the same at first glance but it is not only a matter of nouns. I use elasticity instead of permeability because I characterize the relationship between economic assessment and accountability as either elastic or inelastic in the following sense: even if someone is able to properly assess the state of the economy (according to objective economic markers) the fact that this individual uses this evaluation to either punish or reward the incumbent is what makes her more or less elastic. If they update their beliefs according to their evaluation and vote accordingly, they are elastic. Conversely, if they do not use their evaluation in order to cast their votes, they are inelastic to performance-based information.
 
-% \subsubsection{Elasticity and positive and negative partisanship}
+Elasticity is then directly affected by the amount of affective polarization an individual displays. The more affectively polarized someone is, the less elastic he or she should be. And since affective polarization is affected by both the in-group and the out-group, we can further distinguish between amount and types of affective polarization. As stated above, affective polarization is not necessarily caused only by the in-group or only by the out-group, but it is generally a combination of both. As I will develop in the next section this yields different profiles, whereas the level of affective polarization is an absolute number capturing the \textit{amount} of polarization, this amount can be separated into two ``components'' or what I call \textit{types} of affective polarization. That means that two people with the same level of affective polarization can be so because of very different reasons. There are people that is polarized because they like their in-group very much (i.e. positive partisanship), people that is polarized because they dislike their opponents a lot, or even hate them (i.e.  negative partisanship) or a combination of both things.
 
-Elasticity is then directly affected by the amount of affective polarization an individual displays. The more affectively polarized someone is, the less elastic he or she should be. And since affective polarization is affected by both the in-group and the out-group, we can further distinguish between amount and types of affective polarization. As stated above, affective polarization is not necessarily caused only by the in-group or only by the out-group, but it is generally a combination of both. This yields different profiles, whereas the level of affective polarization is an absolute number capturing the \textit{amount} of polarization, this amount can be separated into two ``components'' or what I call \textit{types} of affective polarization. There are people that is polarized because they like their in-group very much (i.e. positive partisanship), people that is polarized because they dislike their opponents a lot, or even hate them (i.e.  negative partisanship) or a combination of both things. The latter people would be the most \textit{clearly} polarized in the sense that both effects are playing a role. People with this profile like their in-group and dislike their out-group at the same time, which in turn should be the most common case. The other two profiles are less common and would represent people whose level of polarization is due to only one of the two components.
+\subsection{Affective Polarization and its components}
+\label{theoretical-proposal}
 
-Note that this does not mean that the level of polarization is smaller in the latter case. The amount of polarization is directly influenced by the size of each of the two components, that is, the amount of positive feelings towards someone's in-group and the amount of negative feelings towards someone's out-group. The two types are --in principle-- independent of each other in the sense that they could be different from one another and also equal to each other. Nothing makes them to be necessarily equal nor to be different. What is true though is that the larger they are (either one of them or the two of them), the more polarized someone is. To see this more clearly and in order to connect this theorization about the concept of affective polarization with my empirical way of measuring it, let us see some examples. 
+As I mentioned at the beginning of this paper, Affective Polarization is a relatively new issue. The literature analyzed above has only recently developed ways of measuring affective polarization. Apart from the classical aggregated measures (see \citet*{Druckman2019}), especially works like \citet*{Wagner2021} and \citet*{Reiljan2020} have been very prolific and have provided us with ways of measuring affective polarization at the individual level and in multiparty systems respectively. All these empirical proposals are useful to measure the level of affective polarization as such. And all of them rely on the fact that affective polarization is an index closely related to the distance between two main social groups, the in-group and the out-group. However, they also have limitations. On the one hand, \citeposs{Wagner2021} formula (spread of affects) allows us to compute individual levels of affective polarization but cannot be separated into positive and negative feelings, hence, we cannot say anything about what is driving the amount of polarization. On the other hand, \citeposs{Reiljan2020} formula (distance) is build with this spatial idea in mind and hence, is able to tell us whether positive or negative feelings are more important, unfortunately, it is computed at the party level and so it is an aggregated measure that cannot be used for individuals. Trying to overcome this limitations, in this section I provide a new formula based on individual feelings thermometer ratings that can be separated into two components, allowing us to study positive and negative feelings separately. Thus, this new formula can tell us not only how much someone is polarized but also why. Is it because this individual is very close to her in-group? Or, on the contrary, is it because she hates her out-group? Especially now that negative partisanship has gain traction in the literature \citep{Medeiros2013,Abramowitz2016, Wagner2021}, I believe that this is an important contribution that can shed light on the consequences of affective polarization.
 
-There are people whose in-group feelings and out-group feelings are similarly large, and people whose animosity towards one of the groups is substantially larger and is what ultimately drives his/her polarization level. This would have qualitative consequences but, in quantitative terms, there is an infinite number of combinations of these two components\footnote{Actually, the number of combinations is only limited by the scale of the axes or, in other words, the scale in which we measure feelings.} that yields the same amount of affective polarization. What I argue here is that the total amount of polarization can only be due to the combination of negative and positive feelings towards both the out-group and the in-group respectively, and also that either of the two can be null\footnote{In this case, affective polarization is only due to one of the two groups, either the in-group or the out-group.}. 
+In principle, people can be polarized because they like their in-group, they dislike their out-group or a combination of the two. The latter people would be the most \textit{clearly} polarized in the sense that both effects are playing a role. People with this profile like their in-group and dislike their out-group at the same time, which in turn should be the most common case. The other two profiles are less common and would represent people whose level of polarization is due to only one of the two components. Note that this does not mean that the level of polarization is smaller in the latter case. The amount of polarization is directly influenced by the size of each of the two components, that is, the amount of positive feelings towards someone's in-group and the amount of negative feelings towards someone's out-group. The two types are --in principle-- independent of each other in the sense that they could be different from one another and also equal to each other. Nothing makes them to be necessarily equal nor to be different. What is true though is that the larger they are (in absolute value), the more polarized someone is. To see this more clearly and in order to connect this theorization about the concept of affective polarization with my empirical way of measuring it, let us see some examples.
 
-To better see my characterization\footnote{There are alternative interpretations of the very concept of affective polarization. Since I think that which one is used to run the analysis and to think about this phenomenon is important, the reader can find a little discussion about why the characterization proposed here is more suitable than one of the most commonly used alternatives.} of \textbf{amount} and \textbf{types} of affective polarization, see Figure \ref*{fig:types_and_levels_of_AP}. I plot two perperndicular axes representing the feelings thermometer usually used in surveys, in this case ranging from 0 to 100. The two axes define a two-dimensional space in which the horizontal dimension represents the feelings someone has towards his/her out-group and the vertical dimension represents the feelings someone has towards his/her in-group. In this plane, a point represents the combination of these two feelings, and the vector locating this point, represents the level of affective polarization someone has. To be more precise, the module of this vector, which is the distance from the origin of coordinates (50,50) to the point, is the distance that represents the amount of affective polarization. Hence, people laying at a similar distance from the origin of coordinates, has similar amounts of affective polarization, however, this amount can be caused by several combinations of the two components, that is, by different levels of positive and negative feelings. This geometric interpretation coincides --as I will show in section \ref{section:research_design}-- with the way I empirically measure affective polarization at the individual level when one colapses all the parties into two groups, that is, with the spread of affects towards parties.
+There are people whose in-group feelings and out-group feelings are similarly large, and people whose animosity towards one of the groups is substantially larger and is what ultimately drives his/her polarization level. This would have qualitative consequences but, in quantitative terms, there is an infinite number of combinations of these two components\footnote{In fact, the number of combinations is only limited by the scale of the axes or, in other words, by how we measure feelings.} that yields the same amount of affective polarization. What I argue here is that the total amount of polarization can only be due to the combination of negative and positive feelings towards both the out-group and the in-group respectively, and also that either of the two can be null\footnote{In this case, affective polarization is only due to one of the two groups, either the in-group or the out-group.}.
 
 \begin{figure}[H]
+	\caption{Spatial representation of Affective Polarization}
 	\centering
-	\includegraphics[scale=0.70]{Figures/API-theory.png}
-	\caption{Types and levels of Affective Polarization}
+	\includegraphics[width=\textwidth]{Figures/API-theory.pdf}
 	\label{fig:types_and_levels_of_AP}
 \end{figure}
 
-Although it is reasonable to expect that --in general terms-- partisans will be more inelastic than non-partisan voters, the interesting part of the argument is the extent to which affective polarization moderates the level of economic voting of those who identify with the incumbent. Hence, restricting ourselves to the incumbent voters, it is expected to find what I call \textit{supporters}, people with average to high levels of elasticity; what I call \textit{regular partisans} with average levels of (lack of) elasticity and \textit{fans}, with very low levels of elasticity. The first profile would be able to either punish or reward the incumbent according to economic performance. The second profile would be less so and the last one might be unable to critically use the economy as an accountability mechanism. In short, elasticity is a function of positive and negative partisanship. One of the goals of the present study is to disentangle these effects in order to better understand affective polarization when it is decomposed in its two constituent components.
 
+To better see my characterization of \textbf{amount} and \textbf{types} of affective polarization, see Figure \ref{fig:types_and_levels_of_AP}. I plot two perpendicular axes representing the feelings thermometer commonly used in surveys, in this case ranging from -50 to 50 in order to ease the interpretation by letting [0,0] in the center of the axes. The two axes define a two-dimensional space in which the horizontal dimension represents the feelings someone has towards his/her out-group and the vertical dimension represents the feelings someone has towards his/her in-group. The extremes represent very good (50) or very bad (-50) feelings towards each group. In this plane, a point represents the combination of these two feelings. The total amount of polarization for an individual can be computed as the absolute value of the difference between these two thermometer ratings. Additionally, in line with both \citet*{Wagner2021} and \citet*{Reiljan2020}, in order to be precise, we should account for party size. Consider party size as a factor that scale the contribution each party makes to both the in-group and the out-group. Thus, to like or to dislike bigger parties has a larger impact on the final Affective Polarization Index (API) score. Hence, if we use the standardized vote share to weight parties, API is, more formally:
+
+$$
+	\text{Affective Polarization Index}_i = \lvert a_i - b_i \rvert
+$$
+
+where $a$ and $b$ are the weighted average of the distances measured on the vertical and horizontal axis respectively from the [0,0], that is:
+
+$$
+	a_i, b_i = \sqrt{\sum^p_{p=1}{\nu_p*\text{like}_{ip}}}
+$$
+
+where ``like" is the already mentioned feelings thermometer score, $p$ represents the parties in each of the two groups and $\nu_p$ is the normalized (relative to the total of relevant parties included)\footnote{In the operationalizaition section I discuss this more in depth, however, to better understand what I mean notice that since I only include the main 5 parties in the Spanish system, the total vote share does not add up to 100\%. Hence, the vote share is standardized to range from 0 to 1 by simply dividing each party vote share by the total share these 5 parties represent.} vote share of party $p$.
+
+Thus, the amount of affective polarization grows from the first and third quadrants bisector outwards. The further the point is from the function $y=x$ the more polarized someone is. Hence, people laying at a similar distance from $y=x$ have a similar amount of affective polarization, however, this amount can be caused by several combinations of the two components, that is, by different levels of positive and negative feelings. This proposal is assuming two things: first, the in-group and the out-group must be defined beforehand and explicitly. In general, they should coincide with incumbent vs opposition to study an accountability mechanism, but in the specific case of Spain it also coincides with the two ideological blocks suggested by \citet*{Orriols2020}; and second: the score summarizing positive and negative feelings towards each group must be an average of the scores for each of the parties in those groups. This average might or not be weighted accounting for party size. To see a discussion about the consequences of weighting parties when computing affective polarization indexes, see \citet*{Wagner2021}.
+
+Although it is reasonable to expect that --in general terms-- partisans will be more inelastic than non-partisan voters, the interesting part of the argument to be tested is the extent to which affective polarization moderates the level of economic voting of those who identify with the incumbent or those who doesn't. Hence, in both groups, those who are incumbent voters and those who aren't, it is expected to find what I call \textit{supporters}, people with average to high levels of elasticity; what I call \textit{regular partisans} with average levels of (lack of) elasticity and \textit{fans}, with very low levels of elasticity. These three groups are intended to simplify the interpretation and their names are contingent. What is important is to have a group with average levels of polarization, a group below it and a group above it. Based on these three groups, in theory, we should see a distribution of affects and hence a distribution of the API as showed in Figure \ref{fig:empirical_expectations}.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/Expected empirics.pdf}
+	\caption{Expected distribution of Affective Polarization components}
+	\label{fig:empirical_expectations}
+\end{figure}
+
+
+
+Moreover, although the theory suggests a plane divided into four quadrants, only three of those are logical. Most of the people should lay on the second quadrant where positive feelings towards the in-group are larger than feelings towards the out-group. Some people could lay on the first quadrant, where feelings towards both the in-group and the out-group are larger than 50; these people are supposed to have a general positive image of the political parties. Conversely, those laying on the third quadrant have negative feelings towards both groups, hence, they are characterized by a negative image towards the politicians as a whole. Finally, people laying in the fourth quadrant should be outliers and rare cases since these people would have better feelings towards their out-group than towards their in-group, which makes no sense according to the theory advanced here. To summarize, elasticity is a function of positive and negative partisanship. One of the goals of the present study is to disentangle these effects in order to better understand affective polarization when it is separated in its two constituent components.
+
+\newpage
 
 \section{Hypotheses}
 
-As noted in the previous section, I will focus on people whose in-group include the incumbent. This is to say that either they identify with one of the parties in the government or they declare that they would ever vote for one of them. This is because these people are supposed to serve as a democratic check using accountability through economic voting to punish or reward the incumbent, whereas people that declare to be an opposition supporter potentially would never vote for the incumbent.
+As noted in the previous section, I will clearly split the sample into two groups to run the analyses. On the one hand, people whose in-group include the incumbent. This is to say that either they identify with one of the parties in the government or they declare that they would ever vote for one of them\footnote{This is a consequence of the limitations of the dataset. Although more information is provided in the research design section, note that the dataset is divided in waves. Only one of the four waves includes a question explicitly asking for party identification.}. On the other hand, people that declare to be an opposition supporter. The latter potentially would never vote for the incumbent, nonetheless, the same analysis is also run restricting the sample to them because the theory is general enough as to ask for the effects of affective polarization on economic voting for everyone voting.
 
-Among these people, I define three more groups to categorize somehow the level of polarization. According to the theory proposed, people can be characterized either as a \textit{supporter}, a \textit{regular partisan} or a \textit{fan} according to its level of affective polarization and, subsequently, elasticity. Hence, for the sake of simplicity, I will now define the groups of people involved and the theoretical expectations that would ultimately yield the different empirical hypotheses to be tested.
+Within these groups, I define three more groups to categorize somehow the level of polarization. According to the theory proposed, people can be characterized either as a \textit{supporter}, a \textit{regular partisan} or a \textit{fan} according to its level of affective polarization and, subsequently, elasticity. Hence, for the sake of simplicity, I will now define the groups of people involved and the theoretical expectations that would ultimately yield the different empirical hypotheses to be tested.
 
-First, people is identified either as someone willing to vote for the incumbent (e.g. potential incumbent voters) or someone willing to vote for any opposition party (e.g. opposition supporters). This means that people reporting to be not sure about which party they would vote for in a hypothetical election, or people reporting that they would not vote are excluded from the analysis. Second, within each group, we can further distinguish three groups of voters according to its level of elasticity although in order to be clear, recall that I am only interested in the first group, the incumbent supporters. On the extremes we identify: on the one hand people with low to average levels of affective polarization (supporters) and, on the other hand, people with average to high levels of affective polarization (fans). In the middle, we identify those with average levels of affective polarization (regular partisans) (see Figure).
+First, people is identified either as someone willing to vote for the incumbent (e.g. potential incumbent voters) or someone willing to vote for any opposition party (e.g. opposition voters). This means that people reporting to be not sure about which party they would vote for in a hypothetical election, or people reporting that they would not vote are excluded from the analysis. Second, within each group, we can further distinguish three groups of voters according to its level of elasticity. On the extremes I identify: on the one hand people with low to average levels of affective polarization (supporters) and, on the other hand, people with average to high levels of affective polarization (fans). In the middle, we identify those with average levels of affective polarization (regular partisans).
 
-Moreover, affective polarization (at the individual level) is conceived as a measure of the overall spread of affects someone has towards political parties, hence, it could be defined in many valid ways. As I will explain more in depth in the next section, I define affective polarization following \citet*{Wagner2021}, as the weighted average party affect difference compared to each respondent’s weighted
-average party affect. However, although this is useful to see individual's level of affective polarization in general terms, it is not too much so when it comes to look at positive and negative partisanship. Thus, to be able to explore the differences between positive and negative partisanship, it is important to have a least two measures: one capturing the level of affects towards the out-group and one capturing the level of affects towards the in-group. In order to simplify things, I will use in a first approximation the incumbent or governing parties as the in-group and the rest of the main parties as the out-group. Probably, the most accurate split would be between incumbent and opposition considering ideological blocks, but nevertheless, in Spain these two things coincide. PSOE and Podemos (the left-wing ideological block) are the governing parties during the period analyzed and the rest of the main parties included in the analysis represent the right-wing ideological block
+As noted before, it is mandatory to define the in-group and the out-group beforehand so, in order to simplify things, I will use in a first approximation the incumbent or governing parties as the in-group and the rest of the main parties as the out-group. Probably, the most accurate split would be between incumbent and opposition considering ideological blocks, but nevertheless, in Spain these two things coincide. PSOE and Podemos (the left-wing ideological block) are the governing parties during the period analyzed and the rest of the main parties included in the analysis represent the right-wing ideological block.
 
-If we start by considering the individual affective polarization level it is reasonable to expect that incumbent supporters would use economic voting to a lesser extent the more polarized they are. This means that fans should display a higher likelihood of voting for the incumbent than supporters and partisans respectively. Although that should be the case in general, the theory advanced here tells us that among those who rate the state of the economy as worse when asked, polarized people should be more willing to vote for the incumbent. That is to say that, even when the economy is assessed as worse, people is willing to vote for the government, that is, economic voting work worse the more polarized they are. Therefore the general hypothesis can be written as follows:
+The theory advanced here tells us that among those who rate the state of the economy as worse when asked, polarized incumbent's potential voters should be more willing to vote for it. Conversely, polarized opposition's voters should avoid reward the incumbent if economy goes good. That is to say that economic voting work worse the more polarized people are. Therefore the main general hypothesis can be written as follows:
 
-\textit{H1: The more affectively polarized an individual is, the less important is his/her economic assessment to understand his/her likelihood of voting for the incumbent in a future election.}
+\textit{H1: The more affectively polarized an individual is, the less important his/her economic assessment is to understand his/her likelihood of voting for the incumbent in a future election.}
 
-That is, I expect the relationship between affective polarization and economic voting to be inverse. In other words, I expect those less polarized to display a ``normal'' relationship between economic assessment and likelihood of voting for the incumbent. This relationship become ``abnormal'' the more polarized they are. In order to see this empirically, I can compare the groups distinguishing between those who rate the economy as worse than in the past and those who rate the economy as better. Moreover, according to the proposed categorization of the elasticity an individual has, I expect the three groups to be ranked in a certain order. Therefore, I can propose the following hypotheses:
+In order to be more precise exploring the empirical implications of the theory, I turn to formulate the specific hypotheses for each group of voters.
 
-\textit{H2: Among those who assess the economy as \textbf{worse} than in the past, \textbf{fans} are \textbf{more} willing to vote for the incumbent than partisans and supporters respectively.}
+\subsection{Incumbent's potential voters}
 
-Since the categorization of the affective polarization measure is expected to be lineal, I actually expect also partisans to be more willing to vote for the incumbent than supporters.
+According to the argument proposed in section \ref{section:theory} I expect incumbent's supporters likelihood of voting for the incumbent higher the more polarized they are. Therefore:
 
-\textit{H3: Among those who assess the economy as \textbf{better} than in the past, \textbf{supporters} are \textbf{less} willing to vote for the incumbent than partisans and fans respectively.}
+\textit{H2: Incumbent's \textbf{fans} are \textbf{more} willing to vote for the incumbent than regular partisans and supporters respectively.}
 
-% Regarding opposition voters, they are supposed not to be willing to vote for the incumbent in a future election by definition. However, it is reasonable to think that some of the opposition voters would be able to reward the incumbent if the economy goes better. In fact, otherwise the electoral results would never change. Hence, among those who assess the economy as better, I expect those more polarized to be less willing to vote for the incumbent than supporters and partisans. Therefore:
+And related to H1 but applied for incumbent's potential voters, we can formulate the following hypotheses according to the proposed categorization of the elasticity an individual has because the three groups are supposed to be ranked in a certain order. Therefore, I can propose the following hypotheses:
 
-% \textit{H2: Among those who assess the economy as better than in the past, and are identified as opposition voters, fans are less willing to vote for the government than supporters and partisans.}
+\textit{H2a: Among those who assess the economy as \textbf{worse} than in the past and are identified as incumbent's potential voters, \textbf{fans} are \textbf{more} willing to vote for the incumbent than regular partisans and supporters respectively.}
 
-% Once again, since the affective polarization measure is expected to be lineal, the three categories should be ranked in the following order regarding their likelihood of voting for the incumbent: supporters, partisans and fans.
+Since the affective polarization measure is expected to be lineal:
 
-% Some additional hypotheses subject to be tested are related to disentangling the two main components of affective polarization, namely, positive and negative partisanship. Since it is possible that economic voting works even better or more ``strongly" among those who didn't vote for the incumbent, it is important to highlight that the goal of the paper is to compare the level of affective polarization among those that didn't vote for the incumbent. Conversely, we need to compare the level of polarization of those who voted for the incumbent and, for both groups, check the level of economic voting. That is, the level of economic voting is not an absolute measure but a relative one. It is relative to the level of affective polarization of those in the in-group and out-group respectively.
+\textit{H2b: Among those who assess the economy as \textbf{worse} than in the past and are identified as incumbent's potential voters, \textbf{regular partisans} are \textbf{more} willing to vote for the incumbent than supporters.}
 
+\subsection{Opposition's potential voters}
 
-Even when these hypotheses are able to account for all possible combinations between level of affective polarization and strength of economic voting, we don't know if the relationship is driven by negative or positive partisanship. In fact, because of how I have phrased them, I am assuming that somewhat it is positive partisanship what drives the results. This is because everything here gravitates around the incumbent: if you are expected to support the incumbent, in case of polarization it should be due to positive partisanship, that is, because the positive feelings towards the in-group make you exonerate the incumbent. Or in other words, the more polarized you are, the closer you are to the incumbent. However, as discussed in previous section, affective polarization is made up of two components (positive and negative partisanship) and so that could not necessarily be the case. It is reasonable to see people that is either very close to their in-group and people that, on the contrary, hate the out-group very much. In the next section I explore these two possibilities more in depth to have a complete picture of how amount and types of affective polarization are related to each other.
+Regarding opposition voters, they are supposed not to be willing to vote for the incumbent in a future election by definition. However, it is reasonable to think that some of the opposition voters would be able to reward the incumbent if the economy goes better. In fact, otherwise the electoral results would never change. Thus, a general hypothesis regarding the level of elasticity can be formulated:
 
-% Thus, I can test if among the most polarized, economic performance is less important. However, the effects don't have to be necessarily of the same size. It is reasonable, for instance, to find that among the opposition voters economic voting is more important on average than among supporters for the incumbent. This is because even people who is not very polarized is less willing to support a government that they didn't vote for.
+\textit{H3: Opposition \textbf{fans} are \textbf{less} willing to vote for the incumbent than regular partisans and supporters respectively.}
 
-% Similarly, some important derivations of this mechanism can bring worth analyzing consequences. For instance, if affective polarization levels are sustained over time, it is to expect a certain party realignment. Hence, this could be against the prominent idea of catch-all parties suggested by \cite{Kirchheimer1966}, (also see \cite{Krouwel2003}). In polarized contexts, we should observe that parties are less willing to try to seduce the out-group, consequently, niche parties would be more likely to emerge. Although we already know that the levels of affective polarization are subject to the fragmentation of parliaments \citep{Orriols2020} and hence, it could arise a concern about reverse causality, we don't have much information about the consequences of affective polarization. Therefore, it could be also something to be tested in future research. In the same vein, satisfaction with democracy has been widely thought to be impacted by affective polarization since the public opinion environment generated by the associated distrust can make governments perform worse. Hence, in the long run, people can get dissatisfied with the political system. This could be easily tested looking at measures of specific and diffuse support as proposed by \cite{Easton1975}.
+Hence, among those who assess the economy as better, I expect those more polarized (fans) to be less willing to vote for the incumbent than supporters and partisans respectively. Therefore:
+
+\textit{H4a: Among those who assess the economy as \textbf{better} than in the past, and are identified as opposition voters, \textbf{fans} are \textbf{less} willing to vote for the incumbent than regular partisans and supporters respectively.}
+
+Once again, since the affective polarization measure is expected to be lineal:
+
+\textit{H4b: Among those who assess the economy as \textbf{better} than in the past, and are identified as opposition voters, \textbf{regular partisans} are \textbf{less} willing to vote for the incumbent than supporters.}
+
+Even when these groups of hypotheses are able to account for all possible combinations between level of affective polarization and strength of economic voting, we don't know yet if the relationship is driven by negative or positive partisanship. In fact, because of how I have phrased them, I am assuming that somewhat it is positive partisanship what drives the results. This is because everything here gravitates around the incumbent: if you are expected to support the incumbent, in case of polarization it should be due to positive partisanship, that is, because the positive feelings towards the in-group make you exonerate the incumbent. Or in other words, the more polarized you are, the closer you are to the incumbent. This would yield the following hypothesis:
+
+\textit{H5a: For incumbent's potential voters, the better the feelings towards the in-group, the higher their likelihood of voting for the incumbent.}
+
+However, as discussed in the previous section, affective polarization is made up of two components (positive and negative partisanship) and so that could not necessarily be the case. It is reasonable to see people that, contrary to H5a, hate the out-group very much. Since these two hypotheses are not exclusionary \textit{stricto sensu} because both things can happen at the same time, the following hypothesis is also subject to be empirically tested:
+
+\textit{H5b: For incumbent's potential voters, the worse the feelings towards the out-group, the higher their likelihood of voting for the incumbent}
+
 
 
 
@@ -200,42 +374,33 @@ Even when these hypotheses are able to account for all possible combinations bet
 
 \label{section:research_design}
 
-Since my hypotheses refer to individuals, I use a micro level database to empirically test them. Data comes from the E-DEM dataset, a new micro-level online panel survey of the Spanish voting age population with more than 8.109 interviews collected \citep{Torcal2020}. Although I could have used a more comparative approach using, for instance, CSES data, I still think that Spain is an interesting case where testing my hypotheses. Moreover, given my theoretical expectations, a comparative approach would imply a huge effort categorizing first which parties conform the incumbent and which ones the opposition in each country, along with accounting for the voting patterns in all of them. This is, of course, an interesting design for future research but, unfortunately, it lays out of the scope of a Master Thesis. On the contrary, using this dataset I can leverage my knowledge of the Spanish system and I can track individuals' opinions and their assessment of the economy during a crucial period in Spanish recent politics.
+Since my hypotheses refer to individuals I use a micro level database to empirically test them. Data comes from the E-DEM dataset, a new micro-level online panel survey of the Spanish voting age population with more than 8.100 interviews collected \citep{Torcal2020}. Although I could have followed a more comparative approach using, for instance, CSES data, I still think that Spain is an interesting case where testing my hypotheses. Moreover, given my theoretical expectations, a comparative approach would imply a huge effort categorizing first which parties conform the incumbent and which ones the opposition in each country, along with accounting for the voting patterns in all of them. This is, of course, an interesting design for future research but, unfortunately, it lays out of the scope of a Master Thesis. On the contrary, using this dataset I can leverage my knowledge of the Spanish system and I can track individuals' opinions and their assessment of the economy during a crucial period in Spanish recent politics.
 
-This dataset contains four waves spanning a period between October 2018 and May 2019. During that period of time, most of the key political events affecting Spanish politics after 15M happened: for instance, local, regional, national and European elections took place within this period, but also the conviction of Catalan secessionist leaders. And, more importantly, it also covers the six-month period of surge of Spain's new radical right party, Vox \citep{Torcal2020}. This last event is expected to be very related to the increase of affective polarization levels in Spain (either as a cause or a consequence). An important caveat to make is that unfortunately, although data is panel I cannot leverage this feature since most of the questions about future elections are only asked in certain waves. Hence, I use the data as a pool of more than one period but there is not an actual temporal dimension. Also because of that and to avoid unnecessary complexity, I drop observations from wave 1 in which the incumbent was the Partido Popular (PP). This would yield approximately 7500 valid observations. However, since I only have information about vote intention for the last two waves, observations drop to a maximum of 5000, a still good number to work with.
+This dataset contains four waves spanning a period between October 2018 and May 2019. Although short, during that period of time most of the key political events affecting Spanish politics after 15M happened: for instance, local, regional, national and European elections took place within this period, but also the conviction of Catalan secessionist leaders. And, more importantly, it also covers the six-month period of surge of Spain's new radical right party, Vox \citep{Torcal2020}. This last event is expected to be very related to the increase of affective polarization levels in Spain (either as a cause or a consequence). An important caveat to make is that unfortunately, although data is panel I cannot leverage this feature since most of the questions about future elections are only asked in certain waves. Hence, I use the data as a pool of more than one period but there is not an actual temporal dimension. Also because of that and to avoid unnecessary complexity, I drop observations from wave 1 in which the incumbent was the Partido Popular (PP). This would yield approximately 7500 valid observations. However, since I only have information about vote intention for the last two waves, observations drop to a maximum of 5000, a still good number to work with.
 
-This dataset also contains both variables capturing individuals assessment of the economy, and a lot of sociodemographic variables useful to control for. However, it also has a downside. Although there are questions about leaders' assessment and party identification, there is no thermometer scale included. I can use though some questions about ``feelings towards people from certain regions, voters of certain parties, and party leaders" as a different measure of affective polarization. In fact, I think that especially for the case of ``feelings towards voters of different parties", this would be an even more accurate measure of affective polarization as described in section \ref{affective polarization}. The scale is slightly different to the usual one (0-10), it ranges from 0 to 100 with jumps of 15 points. Nonetheless, this measure could still fit \cite{Wagner2021}'s formula.
+This dataset also contains both variables capturing individuals assessment of the economy, and a lot of sociodemographic variables useful to control for. There are questions about leaders' assessment and party identification and even more importantly, although the usual feelings thermometer question is also present in the dataset and will be used as a benchmark, there are several questions similar to this included like ``feelings towards people from certain regions", ``feelings towards voters of certain parties", and ``feelings towards party leaders". Thus, I can use measures of affective polarization different from the usual thermometer scale. In fact, I think that, especially ``feelings towards voters of different parties", would be an even more accurate measure of affective polarization as described in section \ref{affective polarization} since instead of asking about parties, respondents are asked about their feelings towards voters. The scale is slightly different to the usual one (0-10), it ranges from 0 to 100 with jumps of 15 points. Nonetheless, I can still build the API based on the two components mentioned in section \ref{section:theory} and, for reproducibility purposes, this measure could still fit \cite{Wagner2021}'s formula. Let me now define all the intervening variables.
 
 \subsection{Dependent Variable}
 
-My dependent variable is simply a dummy variable taking on value 1 if someone reports to be willing to vote for the incumbent in a hypothetical future (national) election. The difficult part, however, is to define the incumbent given that during the period considered the first coalition government at the national level in Spanish electoral history (since the Second Spanish Republic) was formed. There are different possibilities\footnote{See the appendix to see an analysis of them} but my preferred one (and closest to reality) is the one in which both PSOE (in wave 3) and Podemos (along with PSOE in wave 4) are considered to be the incumbent. It is important to note that this variable is constructed in a rather convoluted way because of data constraints. Ideally, I would use either actual vote recall or vote intention in a certain election. However, since the time span of the survey only covers April 28th national elections, I have combined two different variables to construct my dependent variable. As explained above, I can only use third and fourth waves pooled together but only in wave 3 there is the proper question about vote intention. Hence, for wave 4 I use a question about the probability of ``ever voting for'' different parties as a proxy. In that case, those reporting a probability equal or grater than 5 of voting for either PSOE or Unidas Podemos are considered a 1, the rest are considered opposition voters.
+My dependent variable is simply a dummy variable taking on value 1 if someone reports to be willing to vote for the incumbent in a hypothetical future (national) election. The non-trivial part, however, is to define the incumbent given that during the period considered the first coalition government at the national level in Spanish electoral history (since the Spanish Second Republic) was formed. There are different possibilities\footnote{See the appendix to see an analysis of them} but my preferred one (and closest to reality) is the one in which both PSOE (in wave 3) and Podemos (along with PSOE in wave 4) are considered to be the incumbent. It is important to note that this variable is constructed in a rather convoluted way because of data constraints. Ideally, I would use either actual vote recall or vote intention in a certain election. However, since the time span of the survey only covers April 28th national elections, I have combined two different variables to construct my dependent variable. As explained above, I can only use third and fourth waves pooled together but only in wave 3 there is the proper question about vote intention. Hence, for wave 4 I use a question about the probability of ``ever voting for'' different parties as a proxy. In that case, those reporting a probability equal or grater than 5 of voting for either PSOE or Unidas Podemos (in the respective waves) are considered a 1, the rest are considered a zero.
 
 \subsection{Explanatory varaibles}
 
 \subsubsection{Affective Polarization Index}
 
-The usual way of measuring affective polarization is the one used by \cite{Gidron2018}. They use survey data from a module of the CSES asking respondents to rate political parties in the classical 0-10 thermometer scale (that is, how much they like or dislike a certain party). After that, they basically inverse the scale so that 10 denotes the most negative party evaluation and 0 the most positive. However, instead of calculating an average level of affective polarization, I need to compute the individual amount of polarization. That is obtained as a measure of the spread of the affect an individual shows for a certain number of parties, in other words, it is a ``weighted average party affect difference compared to each respondent's weighted average party affect" \citep{Wagner2021}:
+The usual way of measuring affective polarization is the one used by \cite{Gidron2018}. They use survey data from a module of the CSES asking respondents to rate political parties in the classical 0-10 thermometer scale (that is, how much they like or dislike a certain party). After that, they basically inverse the scale so that 10 denotes the most negative party evaluation and 0 the most positive. However, instead of calculating an average level of affective polarization, I need to compute the individual amount of polarization. In order to be able to benchmark my own theoretical proposal (see section \ref{theoretical-proposal}), I will run the main analyses with my own API and I will add a section in the \hyperref[appendix]{Appendix} using \citet{Wagner2021}'s formula. I believe this is a good empirical exercise since \citeposs{Wagner2021} index is the best we have to date to measure affective polarization at the individual level in multiparty systems.
+
+As defined in \ref{theoretical-proposal}, API is the absolute value of the difference between the weighted average level of affect towards someone's in-group and the weighted average level of affect towards someone's out-group. These two components, in order to yield observations in a space with [0,0] as the reference (or neutral) point, must be slightly modified:
 
 $$
-	\text{Affective Polarization Index}_i = \sqrt{\sum^p_{p=1}\nu_p(\text{like}_{ip}-\overline{\text{like}}_i)^2}
+	\text{Feelings towards the in-group/out-group} = \sqrt{\sum^p_{p=1}\nu_p(\text{like}_{ip}-50)}
 $$
 
-Where $\nu_p$ is the vote share of each party so I can account for party size. Moreover, the mean affect should itself be weighted by party size, calculated as:
+the group of parties $p$ is defined as follows: the in-group is conformed by PSOE and Unidas Podemos for incumbent's potential voters, whereas the out-group is conformed by PP, Ciudadanos\footnote{Ciudadanos is included in this group because they rejected the possibility of forming government with PSOE in April 2019 election. Moreover, as suggested in \citet*{Orriols2020}, left-wing voters' rejection of C's and Vox peaked during this period} and Vox for these voters. For opposition's voters, these groups are just the opposite. $\nu_p$ is the relative weight of each party according to its vote share normalized from 0 to 1. Given that only these 5 parties are included in the analyses, the total vote share does not add up to 100\%. To overcome this, each party vote share is divided by the total share represented by those 5 parties by wave.
 
-$$
-	\overline{\text{like}}_i = \sum^p_{p=1} (\nu_p * \text{like}_{ip})
-$$
+A first benchmark to see to what extent API is compatible with \citeposs{Wagner2021} formula is to see the correlation between these two variables. Correlation coefficient is 0.9123 ($p<0.000$)(see Figure \ref{fig:corr-api-wap} in the \hyperref[appendix]{Appendix}).
 
-When the difference (distance\footnote{This is a not very important mathematical comment. However, in order to be rigorous, this is not a distance \textit{per se} since it can take negative values. The reason why is because the feelings towards parties can be larger or smaller than the average level of affects. However, the absolute value of that difference actually represents the distance between affects towards a certain party and the average level of affects.}) $\text{like}_{ip}-\overline{\text{like}}_i$ is larger, someone like or dislike this party more than the average. Whereas when this difference is close to zero, the individual does not display intense animosity towards that party. Since this operation is computed for each party in the parliament, the resulting index captures the overall dispersion of affects. The higher this index is, the more polarized an individual is since large distances (either positive or negative) contribute to increase the value of the index.
-
-This allows me to compare individuals using their level of affective polarization. An easy and \textit{a priori} objective way to define the typology of voters according to its level of elasticity (e.g. affective polarization) is to cut the index in three slices according to the standard deviation. Hence, \textit{\textbf{supporters}}\footnote{I want to clarify that these categories and names are just to ease the interpretation of the results. In order to plot the different effects at different levels of elasticity, I recode the Affective Polarization Index into a categorical variable. Again, the names are just inteded to better identify potential incumbent's voters with low, medium or high elasticity.} would be those whose affective polarization level is below one standard deviation, \textit{\textbf{partisans}} would be defined as those between minus one and plus one standard deviations and \textit{\textbf{fans}} are defined as those above one standard deviation. That yields the next distribution of voters:
-
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.3]{Figures/groupsHist.png}
-\end{figure}
-
+As suggested in section \ref{section:theory} elasticity of voters is defined by their level of affective polarization. An easy and \textit{a priori} objective way to define the typology of voters according to its level of elasticity is to cut the API in three slices according to the standard deviation. Hence, \textit{\textbf{supporters}} would be those whose affective polarization level is below one standard deviation, \textit{\textbf{partisans}} would be defined as those between minus one and plus one standard deviations and \textit{\textbf{fans}} are defined as those above one standard deviation. That yields the next distribution of voters:
 
 \begin{table}[H]
 	\centering
@@ -244,52 +409,30 @@ This allows me to compare individuals using their level of affective polarizatio
 	\begin{tabular}{@{}lcc@{}}
 		\toprule
 		           & Observations & Percentage \\ \midrule
-		Supporters & 18           & 2.21       \\
-		Partisans  & 521          & 64.08      \\
-		Fans       & 274          & 33.70      \\
-		Total      & 813          & 100.00     \\ \bottomrule
+		Supporters & 196          & 18.88      \\
+		Partisans  & 669          & 64.45      \\
+		Fans       & 173          & 16.67      \\
+		Total      & 1,038        & 100.00     \\ \bottomrule
 	\end{tabular}
 \end{table}
 
-In order to explore the data a bit before I turn to the models, I first include two general pictures of the affective polarization index distribution. One distinguishing between government and opposition partisans\footnote{Here everyone who is not a government partisan, is considered a opposition partisan. However, I am considering to include a graph in the appendix desegregating this category with partisan of the opposition and those without a partisan identity.} (Figure \ref*{fig:AP_partisan}) and a second one distinguishing by party identity (Figure \ref*{fig:AP_party_id}). These descriptive data are intended to serve as a general picture of Affective Polarization in Spain provided that this dataset is one of the few available to this day to study such patterns. Although the main goal of the paper is to explore the intensity of economic voting conditional on polarization level and I should focus on incumbent's voters, I think that it is valuable to compare some groups in order to have some insight before I estimate my equations.
-
-We can see that the distribution of the Affective Polarization Index is quite normal for both the incumbent voters and opposition voters. However, it is interesting to see that incumbent voters (Mean = 4.812; SE = 0.03) are significantly more polarized on average than opposition ones (Mean = 3.812; SE = 0.02) (Diff = 1.01; SE = 0.05).
+And if we now look at Figure \ref{fig:pos_neg_incumbent} we see the distribution of the two components (positive and negative partisanship) for potential incumbent's voters.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.25]{Figures/AP_index_by_partisanship.png}
-	\caption{\label{fig:AP_partisan} Affective Polarization Index by partisanship}
+	\includegraphics[scale=0.3]{Figures/pos_neg_groups.png}
+	\caption{Positive and Negative Partisanship for potential incumbent's voters}
+	\label{fig:pos_neg_incumbent}
 \end{figure}
 
-If we take a look now at the distribution of polarization by party (Figure \ref*{fig:AP_party_id}), we also observe some interesting patterns. First, distributions look more similar compared to each other than opposition vs incumbent voters, that is, all parties seem to display a normal distribution of affectively polarized voters. Nevertheless, we can see that mainstream parties (PP and PSOE) are slightly more polarized on average than the rest. However, if we take a look at the distances between these means\footnote{All the descriptive statistics can be found tabulated in the Appendix}, we find that PSOE voters are significantly more polarized than Vox (Diff = 7.570; $p < 0.000$) and Ciudadanos (Diff = 3.526; $p < 0.007$) and  Unidas Podemos voters (Diff = 2.540; $p < 0.046$) but PP and Unidas Podemos voters are also significantly more polarized than Vox (Diffs = 5.739 and 5.146 respectively; $p<0.000$). Surprisingly, Ciudadanos voters also seem to be more polarized than Vox voters (Diff = 4.070; $p<0.024$).
-
-These patters might look random at first glance but interestingly enough they could be talking about the dynamics of positive and negative partisanship to a great extent. First, mainstream parties voters (recall that I plot here party identification) in the Spanish system are expected to be against everyone else, specially against the opposite mainstream party. On the one hand, they are against the other side of the spectrum and at the same time, they are against the extreme portion of the same part of the spectrum. As explained in \citet*{Wagner2021}, voters with positive affects towards a big party and with negative affects towards the other big party are supposed to display higher levels of affective polarization when we measure it as the weighted spread of affects. Unidas Podemos and Ciudadanos voters should be less polarized since sometimes they are grouped into the so-called ``nueva política (new politics)'' and hence, negative partisanship shouldn't be that large. Or the other way around, their voters should display some positive affects towards part of the out-group. In the same vein, Vox voters are quite close to PP voters, specially the most polarized they are (see Figure \ref*{fig:feelings}) and positive partisanship might be driving the distribution. If positive partisanship is so important, negative partisanship can be irrelevant if voters are equally far from all the parties, what, on average, yields low levels of affective polarization.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.30]{Figures/AP_index_by_party_id.png}
-	\caption{\label{fig:AP_party_id} Affective Polarization Index by party identification}
-\end{figure}
-
-In Figure \ref*{fig:feelings} we can see the distance in feelings towards voters of each party for those whose level of affective polarization is above and below the average. This is an important measure because reveals the extent to which positive and negative partisanship is present in the Spanish system. The horizontal axis plots the level of warmness that an individual has regarding voters of every one of the four biggest parties. It ranges from 0 being feeling very cold to 100 being feeling very close or warm. In the vertical axis I separate the results for each party to explore the plausible heterogeneity. The parties are ordered according to their position in the ideological scale (left to right is top to bottom) in order to ease the interpretation of the results. The results are somewhat mixed although they can give us some insight to explain later the main empirical findings.
-
-First of all, there is a common pattern among parties and their supporters. Although we could expect that those more polarized than the average have stronger sympathy for their party's voters (i.e. positive partisanship) we rather see that this is only the case for leftwing parties. PSOE and UP voters are significantly warmer towards its copartisans, but also towards the leftwing parties as a whole. Interestingly, none of the remaining parties' voters display a significant increase in positive feelings towards their copartisans the more polarized they are. However, we see some interesting patterns if we now look to the right of the ideological spectrum. PP and Vox voters are significantly warmer towards the other party voters the more polarized they are. That is as if they would define their in-group as composed by the rightwing parties as a whole. Moreover, they also share a special dislike for PSOE (the incumbent most of the time analyzed) voters. Finally, Ciudadnos voters only seem to dislike specially PSOE voters, the remaining distances are not significantly different from zero at the 95\% level.
-
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.35]{Figures/combinedfeelingsAP.png}
-	\caption{\label{fig:feelings} Feelings towards party voters and affective polarization}
-\end{figure}
-
-The reason behind plotting parties ordered by ideology in the vertical axis is to better see that except for Ciudadanos who is put at the end of the panel on purpose, we see a mirror image on the pattern. In line with \citep*{Orriols2020}, there is a clear pattern regarding the out-group formation that basically has to do with two ideological blocks. If we look at Figure \ref*{fig:feelings} by rows, we see that left parties' voters display feelings that are a mirror image of those of the rightwing voters. Moreover, the spread of those feelings, in line with \citep*{Wagner2021} is grater as the parties move apart ideologically, that is, feelings towards both the in-group and the  out-group are more extreme for UP and VOX voters than they are for PSOE and PP respectively. Interestingly enough, we also see that PSOE and UP supporters are significantly warmer towards their in-group when they are more polarized whereas PP and VOX supporters tend to be colder towards their out-group the more polarized they are. This could suggest that positive partisanship is stronger on the left whereas negative partisanship tend to be stronger on the right. However, an alternative interpretation is that positive partisanship is stronger among incumbent's voters. Whereas within opposition supporters, negative affects towards incumbent are more prominent.
+We can see that, as expected, most of the potential incumbent's voters, lay on the second quadrant and, more importantly, polarization grows from $y=x$ outwards. We also see some extreme cases in the first quadrant that are either PSOE or Unidas Podemos voters that have positive feelings towards part of the out-group, recall that Ciudadanos is in the out-group for these voters. For a complete picture of the distribution of the two components of affective polarization by party, refer to Figure \ref{fig:pos-neg-parties}.
 
 \subsubsection{Economic assessment}
 
-Now, In order to check if economic voting `is working' as expected, I need a measure of national economy assessment made by respondents. E-DEM dataset includes the arguably most straightforward and common question about economic assessment. Respondents are not asked to give a very precise assessment of the economic situation, they are just asked if they think economy is either better or worse than in the last 12 months.
-The variable as it appears in the dataset takes on values 1 (``A lot worse'') to 5 ``A lot better''. I recode this variable to be a dummy variable. The goal is to ease the interpretation of the results focusing on the change from a negative assessment to a positive one.
+As a measure of national economy assessment made by respondents, E-DEM dataset includes the arguably most straightforward and common question about economic assessment. Respondents are not asked to give a very precise assessment of the economic situation, they are just asked if they think economy is either better or worse than in the last 12 months.
+The variable as it appears in the dataset takes on values 1 (``A lot worse'') to 5 ``A lot better''. I recode this variable to have three categories: ``worse", ``no difference'' and ``better''. The goal is to ease the interpretation of the results focusing on the change from a negative assessment to a positive one. Nonetheless, I keep the neutral category because it is the most populous one (almost 42\% of observations).
 
-% Please add the following required packages to your document preamble:
-% \usepackage{booktabs}
+
 \begin{table}[H]
 	\centering
 	\caption{Assessment of the Spanish economy}
@@ -309,131 +452,139 @@ The variable as it appears in the dataset takes on values 1 (``A lot worse'') to
 \subsubsection{Control variables}
 My control variables are common sociodemographic controls that might influence the likelihood of voting for the incumbent. They are the region (autonomous community) the individual comes from, sex, age, size of the habitat individual lives, martial status, educational level attained, occupation, income and religious beliefs.
 
+
 \subsection{Models}
 
-The general model to be estimated is as follows:
+I use logit models to estimate the likelihood of voting for the incumbent. The general equation is as follows:
 
 \begin{equation}
 	\label{model}
 	y_i = \beta_1 x_{1i} + \beta_2 x_{2i} + \beta_3 Z_i  + \eta_i  + \epsilon_i
 \end{equation}
 
-where $y_i$ is a dummy variable taking on value 1 if the respondent will vote for the incumbent in the following election and 0 otherwise\footnote{For respondents in wave 4, since there is no question asking about a hypothetical future election, a 1 represents people with a score of more than 5 in the question about the probability of ever voting for either PSOE or Unidas Podemos (Podemos+IU)}, $\beta_1$ is the expected effect of economic voting (i.e. the likelihood of voting for the incumbent according to economic assessment) alone, $\beta_2$ is the effect of affective polarization\footnote{In some specifications, this variable is a continuous measure, in others it is a dichotomous one, splitting the sample between those above and those below the average level of affective polarization} on the probability of voting for the incumbent and, the outcome of interest, $\beta_3$ is the interaction between both $x_1$ and $x_2$. Thus, $\beta_3$ capture the effect of economic voting according to the level of affective polarization of the individual. Finally, $\eta_i$ is a vector of sociodemographic control variables, and $\epsilon$ is the error term.
+where $y_i$ is a dummy variable taking on value 1 if the respondent will vote for the incumbent in the following election and 0 otherwise\footnote{For respondents in wave 4, since there is no question asking about a hypothetical future election, a 1 represents people with a score of more than 5 in the question about the probability of ever voting for either PSOE or Unidas Podemos (Podemos+IU)}, $\beta_1$ is the expected effect of economic voting (i.e. the likelihood of voting for the incumbent according to economic assessment) alone, $\beta_2$ is the effect of affective polarization\footnote{In some specifications, this variable is a continuous measure, in others it is a dichotomous one, splitting the sample between those above and those below the average level of affective polarization} on the probability of voting for the incumbent and, the outcome of interest, $\beta_3$ is the interaction between both $x_1$ and $x_2$. Thus, $\beta_3$ captures the effect of economic voting according to the level of affective polarization of the individual. Finally, $\eta_i$ is a vector of sociodemographic control variables, and $\epsilon$ is the error term.
 
+The same model is estimated when focusing on the components of the API. in that case, $\beta_1$ would still represent the effect of economic voting on the likelihood of voting for the incumbent, whereas $\beta_2$ would represent te effect of either positive or negative partisanship. Finally, $\beta_3$ is again the interactive effect between the component and the economic voting variable.
+
+\section{Affective Polarization in Spain (descriptive results)}
+
+Once I have presented my research design it is worthwhile to explore the data to have an image of Affective Polarization in Spain. I first include two general pictures of the API distribution. One distinguishing between government and opposition partisans (Figure \ref{fig:AP_partisan}) and a second one distinguishing by party identity (Figure \ref{fig:AP_party_id}).
+
+We can see that the distribution of the API does not follow a normal distribution for neither the incumbent voters and opposition voters. Importantly, there are a lot of zeros for the case of opposition voters what is suggesting a smaller level of affective polarization on average. In fact, it is interesting to see that incumbent voters (Mean = 9.605; SE = 0.168) are significantly more polarized on average than opposition ones (Mean = 7.780; SE = 0.184) (Diff = 1.83; SE = 0.249). This lack of normality can be a concern for the results when trying to estimate the equations, nonetheless, it is important to note that Wagner's WAP distribution is quite similar (see Figure \ref{fig:WAP_oppo_incumb} in the \hyperref[appendix]{Appendix}).
+
+\begin{figure}[H]
+	\centering
+	\caption{\label{fig:AP_partisan} Incumbent vs Opposition API distributions}
+	\includegraphics[scale=0.25]{Figures/AP_index_by_partisanship.png}
+\end{figure}
+
+If we take a look now at the distribution of polarization by party (Figure \ref{fig:AP_party_id}), we also observe some interesting patterns. First, distributions look more different compared to each other than opposition vs incumbent voters. Nevertheless, we can see that parties' affective polarization means' ranking is somehow related to the position they hold in the ideological scale (the closer to the center, the less polarized they seem). Vox and Unidas Podemos are the most polarized on average, PP and PSOE are less so, and Ciudadanos voters are the ones with the smallest score\footnote{All the descriptive statistics can be found tabulated in the \hyperref[appendix]{Appendix}}. We find that Unidas Podemos voters are significantly more polarized than PP (Diff=1.802, $p<0.000$), Ciudadanos (Diff=5.533, $p<0.000$) and PSOE (Diff=1.674, $p<0.000$) voters; PSOE voters are significantly more polarized than Ciudadanos (Diff=3.858, $p<0.000$), finally, Ciudadanos voters are significantly less polarized than VOX (Diff=-4.966, $p<0.000$) and PP (Diff=-3.731, $p<0.000$) voters respectively. The remaining differences are not statistically different from zero.
+
+These patterns are suggesting that affective polarization at the individual level is quite close to ideological polarization. However, we cannot say anythin conclusive only with this descriptive data, it is interesting to find parties ranked as they are in ideological terms. That makes sense since parties closer to the extremes (ideologically) are --by definition-- farther from the outgroup. Hence, negative feelings could play a role. On the contrary, parties closer to the center, specially Ciudadanos, may have voters close enough to both the in-group and the out-group (recall that these groups are defined beforehand which is a logical limitation to this analysis). Thus, Ciudadanos voters positive and negative feelings might counteract to a larger extent. Moreover, it is very clear that Ciudadanos, PP and PSOE respectively, are the parties with more people with a level of zero affective polarization. To see a more specific picture of positive and negative partisanship, see Figure \ref{fig:pos-neg-parties}.
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/AP_index_by_party_id.png}
+	\caption{\label{fig:AP_party_id} Affective Polarization Index by party identification}
+\end{figure}
+
+It can be seen at first sight that parties on the right (Ciudadanos, PP and Vox) tend to have a smaller in-group feeling, thus, leveraging the fact that parties are an ideological mirror in Spain, that is, that placing Ciudadanos in the middle, we have two moderate and two extrem parties to the right and to the left, we can infer that PSOE voters affective polarization level is driven by positive partisanship to a large extent, whereas PP affective polarization level is driven to a larger extent by negative partisnahip. Something similar can be said about Unidas Podemos and Vox. Overall, left-wing parties seem to be closer to their in-group whereas right-wing parties tend to be farther from their out-group. In fact, if we look for the difference in a more precise way, positive partisanship is significantly larger on average for incumbent parties (left-wing parties) at the 95\% level (Diff=2.955, $p<0.000$). And also, although differences are smaller, negative partisanship is larger (and negative) on average for opposition parties (Diff=0.683, $p<0.001$).
+
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/pos_neg_parties.png}
+	\caption{Positive and Negative partisanship by party id}
+	\label{fig:pos-neg-parties}
+\end{figure}
+
+
+Now that we have seen the distribution of the API and its components for each of the main parties, it is interesting to say something about feelings inter parties. In Figure \ref{fig:feelings} we can see the distance in feelings towards \textbf{voters} of each party for those whose level of affective polarization is above and below the average. This is an important measure because reveals the extent to which positive and negative partisanship is present in the Spanish system. The horizontal axis plots the level of warmness that an individual has regarding voters of every one of the five biggest parties. It ranges from 0 being feeling very cold to 100 being feeling very close or warm. In the vertical axis I separate the results for each party to explore the plausible heterogeneity. The parties are ordered according to their position in the ideological scale (left to right is top to bottom) in order to ease the interpretation of the results. The results are very robust.
+
+
+First of all, for every party, voters more affectively polarized (red) are closer to their party, that is, positive partisanship towards own's party plays a crucial role. This is specially the case for Vox, the party with the largest score\footnote{To see these distances plotted as punctual estimations, see Figure \ref{fig:dot-distances} in the \hyperref[appendix]{Appendex}}. Also and once again, we can see that the in-group and the out-group as previously defined are playing the expected role. For every party, more polarized voters belonging to the in-group tend to feel closer to that party, whereas more polarized voters of the out-group tend to feel farther. Finally, we can also observe the importance of less polarized voters (i.e. moderate voters) within parties. For example, less polarized voters of Ciudadanos and PP are on average close to 50 in the feelings termomether with respect to PSOE, whereas more polarized ones, are clearly cooler.
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/combinedfeelingsAP.png}
+	\caption{\label{fig:feelings} Feelings towards party voters and affective polarization}
+\end{figure}
+
+The reason behind plotting parties ordered by ideology in the vertical axis is to better see that except for Ciudadanos who is put at the end of the panel on purpose, we see a mirror image on the pattern. In line with \citep*{Orriols2020}, there is a clear pattern regarding the out-group formation that basically has to do with two ideological blocs. If we look at Figure \ref{fig:feelings} by rows, we see that left parties' voters display feelings that are a mirror image of those of the rightwing voters. Moreover, the spread of those feelings, in line with \citep*{Wagner2021} is grater as the parties move apart ideologically, that is, feelings towards both the in-group and the  out-group are more extreme for UP and VOX voters than they are for PSOE and PP respectively. Interestingly if we focus now on Ciudadanos, we see that for leftist voters (PSOE and UP), it is clearly considered a party belongin to the out-group. Especially for those more affectively polarized. Conversely, PP and VOX voters have positive feelings towards Ciudadanos, espcially the more polarized they are. Nonetheless, PP voters seem to like Ciudadanos voters regardless of the level of polarization. This is also true for Ciudadanos voters feelings towards PP, meaning that these parties' voters are both in the same group. Vox voters, on the contrary, only display positive feelings towards these two parties the more polarized they are. For voters less polarized than the average, feelings are quite neutral what may explain, once again, the small amount of positive partisanship for this group of parties.
+
+\newpage
 
 \section{Results}
 
-Now we turn to the main results of the paper. In this section I summarize and discuss the empirical evidence for or against my main hypotheses:
+Now we turn to the main results of the paper. In this section I summarize and discuss the empirical evidence for or against my main hypotheses. I expect the relationship between affective polarization and economic voting to be inverse. In other words, I expect those less polarized to display a ``normal'' relationship between economic assessment and likelihood of voting for the incumbent. This relationship become ``abnormal'' the more polarized they are. In order to see this empirically, I compare the groups distinguishing between those who rate the economy as worse than in the past and those who rate the economy as better.
 
-\textit{H1: The more affectively polarized an individual is, the less important is his/her economic assessment to understand his/her likelihood of voting for the incumbent in a future election.}
+In order to be consistent with how I have presented my hypotheses, I will divde this section into two subsections, one for the analysis of incumbent's potential voters and another one for oppostion's voters.
 
-\textit{H2: Among those who assess the economy as \textbf{worse} than in the past, \textbf{fans} are \textbf{more} willing to vote for the incumbent than partisans and supporters respectively.}
-
-\textit{H3: Among those who assess the economy as \textbf{better} than in the past, \textbf{supporters} are \textbf{less} willing to vote for the incumbent than partisans and fans respectively. }
+\subsection{Incumbent's potential voters}
 
 \begin{table}[H]
-	\label{coefplot}
+	\label{main_results}
 	\centering
-	\caption{\label{tab:preferred_model} Effects of affective polarization on economic voting}
+	\caption{\label{tab:incumbent} Effects of affective polarization on economic voting (incumbent's poential voters)}
 	\input{Figures/new.tex}
 
 \end{table}
 
-\begin{figure}[H]
-	\centering
-	\includegraphics[scale=0.35]{Figures/margins.png}
-	\caption{\label{fig:margins} Economic voting and affective polarization }
-\end{figure}
+Looking at Table \ref{tab:incumbent} we can see that contrary to what could be expected, the economic assessment variable (i.e. economic voting) does not work in any specification. Economic voting was expected to work better among opposition supporters, however, for incumbent's potential voters, the fact that a change in the assessment of the economy does not produce any effect on the likelihood of voting for the incumbent, breaks the model and makes very difficult to interpret the rest of the coefficients. In fact, $\beta_3$, that is, the effect of economic voting conditional on the level of polarization is not significant either. Nevertheless, in most of the specifications (1, 2, 4) these coefficients have the predicted sign.
+
+All we can say about this table is that the API has a positive and significant effect on the likelihood of voting for the incumbent. Hence, this is evidence in favor of \textit{H2}. This could be suggesting that the API is a good predictor of the likelihood voting for the incumbent but there is no effect of affective polarization on accountability. In order to see this more visually, in Figure \ref{fig:margins} I plot margins at different levels of elasticity and economic assessment.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{Figures/positive_margins.png}
-	\caption{\label{fig:positive-margins} Economic voting and positive partisanship}
+	\includegraphics[width=0.7\textwidth]{Figures/margins.png}
+	\caption{\label{fig:margins}Margins of economic voting and elasticity }
 \end{figure}
+
+
+\begin{table}[H]
+	\label{inc-pos-neg}
+	\centering
+	\caption{\label{tab:incumbent-pos-neg} Effects of affective polarization components on economic voting}
+	\input{Figures/pos-neg.tex}
+
+\end{table}
+
+Something similar is in Table \ref{tab:incumbent-pos-neg}. None of the economic voting variables have an effect statistically different from zero on the likelihood of voting for the incumbent. Again, most of them have the expected sign, but no significance. However, it seems that feelings towards the in-group has a positive and significant effect on the likelihood of voting for the incumbent, what is evidence in favor of H2a and agiainst H2b. This suggests that for incumbent's potential voters, is positive partisanship what drives affective polarization.
 
 \begin{figure}[H]
 	\centering
-	\includegraphics[scale=0.35]{Figures/negative_margins.png}
-	\caption{\label{fig:negative-margins} Economic voting and negative partisanship}
+	\includegraphics[width=\textwidth]{Figures/pos-neg.png}
+	\caption{\label{fig:pos-neg-inc-margins} Economic voting and positive and negative partisanship for incumbent's potential voters}
 \end{figure}
-% As we can see in Table \ref*{tab:preferred_model} I present the results of estimating equation \ref*{model}\footnote{To have a notion of the magnitude of the effects, in future iterations of the paper I will present odds ratios in the appendix.} first without controls and then adding common sociodemographic controls. In the two models, the effect of economic voting is positive as expected, meaning that those that evaluate the economy as better than in the last twelve months, are more likely to vote for the incumbent. Furthermore, the affective polarization index measured (following \citep*{Wagner2021}) as the weighted average party affect difference compared to each respondent's weighted average party affect has a negative and significant effect on the likelihood of voting for the incumbent. This measure though is not useful alone since its interpretation is not easy, hence, I provide marginal effects in section \ref*{section:margins} to explore the different possible patterns.
-
-% The main quantity of interest, namely, the interaction between these two terms, is significant at the 99.9\% level (even after controlling for a set of sociodemographic control variables) and its effect is negative which constitute empirical support for the general hypothesis since it would mean that as people is more polarized, they are less able to use economic voting in the proper (or rational) way. In other words, this flip in the signs of $\beta_1$ and $\beta_2$ would suggest that, according to my theoretical expectations, those more polarized are less able to vote critically. To better see the results I also provide an alternative way of presenting the results in Figure \ref*{fig:preferred_model}
-
-% Finally, in order to see different possible specifications I provide now models with a continuous and a dichotomous version of the Affective Polarization index. Moreover, I also provide models desegregating by party identification instead of splitting between incumbent and opposition supporters. I have to say in advance that only the model with the dichotomous measure and opposition vs incumbent supporters yields statistically significant results.
-
-% \begin{table}[H]
-% 	\label{coefplot}
-% 	\centering
-% 	\caption{\label{tab:preferred_model} Effects of affective polarization on economic voting (preferred specification)}
-% 	\input{Figures/preferred_model.tex}
-
-% \end{table}
-
-% \begin{figure}[H]
-% 	\centering
-% 	\includegraphics[scale=0.35]{Figures/preferred_model.png}
-% 	\caption{\label{fig:preferred_model} Economic voting and affective polarization (Preferred Specification)}
-% \end{figure}
-
-% \begin{table}[H]
-% 	\centering
-% 	\caption{\label{tab:continue_opposition} Effects of affective polarization on economic voting (AP index continuous and opposition vs incumbent)}
-% 	\input{Figures/continue_opposition.tex}
-
-% \end{table}
-
-% \begin{table}[H]
-% 	\centering
-% 	\caption{\label{tab:dummy_parties} Effects of affective polarization on economic voting (AP index dichotomous and party ID)}
-% 	\input{Figures/dummy_parties.tex}
-
-% \end{table}
-
-% \begin{table}[H]
-% 	\centering
-% 	\caption{\label{tab:continuous_parties} Effects of affective polarization on economic voting (AP index continuous and party ID)}
-% 	\input{Figures/continuous_parties.tex}
-
-% \end{table}
 
 
-% \newpage
+\subsection{Opposition's potential voters}
 
-% \subsection*{Marginal Effects}
-% \label{section:margins}
-% In this section, I provide marginal effects at different levels of economic assessment for each of the specifications above.
+\begin{table}[H]
+	\centering
+	\caption{\label{tab:opposition} Effects of affective polarization on economic voting (opposition's poential voters)}
+	\input{Figures/opposition.tex}
 
-% \begin{figure}[H]
-% 	\centering
-% 	\includegraphics[scale=0.30]{Figures/continue_oppo_incumb.png}
-% 	\caption{\label{fig:continue_oppo_incumb} (AP index continuous and opposition vs incumbent)}
-% \end{figure}
+\end{table}
 
-% \begin{figure}[H]
-% 	\centering
-% 	\includegraphics[scale=0.30]{Figures/dummy_oppo_incumb1.png}
-% 	\caption{\label{fig:dummy_oppo_incumb1} (AP index dichotomous and opposition vs incumbent)}
-% \end{figure}
+In table \ref{tab:opposition} we see results for opposition's supporters. As discussed in section \ref{section:theory}, economic voting's effect here is much more powerful. In almost every specification, the effect is positive and statistically significant. Moreover, the effect of the API is, as expected, opposite to incumbent's potential voters. Here, the effect is negative, meaning that the more polarized they are, opposition's potential voters are less willing to vote for the incumbent, which is evidence in favor of H3. Unfortunately, regarding effects of affective polarization on economic voting, once again, all the coefficients have the sign predicted by the theory but are not distinguishable from zero.
 
-% \begin{figure}[H]
-% 	\centering
-% 	\includegraphics[scale=0.30]{Figures/dummy_parties.png}
-% 	\caption{\label{fig:dummy_parties} (AP index dichotomous and party ID)}
-% \end{figure}
+Finally, in table \ref{tab:oppo-pos-neg}, we find that economic voting also works as expected, the better voters rate the economy, the more willing they are to vote for the incumbent. Regarding feelings towards the in-group and the out-group, here we find, interestingly, that both have a significant effect. In fact, both have the predicted sign. The interpretation of these coefficients though is not trivial. Recall that these are opposition's potential voters, hence, here the in-group is the opposition whereas the out-group is the incumbent. Therefore, we find that the closer to the in-group an opposition's potential supporter  is the less willing he/she is to vote for the incumbent. But it is also true that the more they like their out-group, that is, the incumbent, the more willing they are to vote for it. This yields evidence in favor of H5a and H5b.
 
-% \begin{figure}[H]
-% 	\centering
-% 	\includegraphics[scale=0.30]{Figures/continue_parties.png}
-% 	\caption{\label{fig:continue_parties} (AP index continuous and party ID)}
-% \end{figure}
+\begin{table}[H]
+	\centering
+	\caption{\label{tab:opposition-pos-neg} Effects of affective polarization components on economic voting}
+	\label{tab:oppo-pos-neg}
+	\input{Figures/pos-neg_oppo.tex}
+
+\end{table}
 
 
-% \section{Broader discussion and possible implications}
+\section{Discussion}
 
-% All in all, I think that this paper can contribute to our knowledge about affective polarization as such, and more specifically I can push the  frontier of knowledge forward by analyzing its consequences. This piece of work can have even broader implications since it speaks to the general question of accountability itself. I tend to agree with Robert Fishman that economic voting is not always good. Or, in other words, the fact that polarized people would be less prone to vote ``rationally" according to the economic voting logic is not necessarily something good for our democracies. Nevertheless, looking at the amount of literature proving empirically the importance of economy as a tool for the voter to punish or reward politicians in the government, I still think that economic voting is somewhat related to accountability. Accountability is by no means the only desirable feature of a democratic system, but \textit{ceteris paribus}, it is better to have accountability than not to have it. Moreover, the lack of accountability I predict in this study is related to people's lack of elasticity when it comes to critically analyze the economic situation. If people is not able to punish or reward incumbents due to biases and polarization, in general terms, I would say it is a bad outcome for our democracies.
+% Similarly, some important derivations of this mechanism can bring worth analyzing consequences. For instance, if affective polarization levels are sustained over time, it is to expect a certain party realignment. Hence, this could be against the prominent idea of catch-all parties suggested by \cite{Kirchheimer1966}, (also see \cite{Krouwel2003}). In polarized contexts, we should observe that parties are less willing to try to seduce the out-group, consequently, niche parties would be more likely to emerge. Although we already know that the levels of affective polarization are subject to the fragmentation of parliaments \citep{Orriols2020} and hence, it could arise a concern about reverse causality, we don't have much information about the consequences of affective polarization. Therefore, it could be also something to be tested in future research. In the same vein, satisfaction with democracy has been widely thought to be impacted by affective polarization since the public opinion environment generated by the associated distrust can make governments perform worse. Hence, in the long run, people can get dissatisfied with the political system. This could be easily tested looking at measures of specific and diffuse support as proposed by \cite{Easton1975}.
 
-% I believe that analyzing the consequences of affective polarization and its effects on political attitudes can open an inspiring intellectual debate about the perils of the phenomenon and the available tools we have to avoid the erosion of our democracies.
 
 \newpage
 \bibliographystyle{apalike}
@@ -442,25 +593,96 @@ Now we turn to the main results of the paper. In this section I summarize and di
 
 \newpage
 
-\section*{Appendix}
-
+\section{Appendix}
+\label{appendix}
+% Please add the following required packages to your document preamble:
+% \usepackage{booktabs}
+% \usepackage{multirow}
 \begin{table}[H]
 	\centering
-	\caption{Comparisons of Affective Polarization Index by party identification}
+	\caption{ANOVA comparisons of API by party identification.}
 	\label{tab:anova-parties}
-	\begin{tabular}{@{}ccccc@{}}
+	\begin{tabular}{@{}lcccc@{}}
 		\toprule
-		\multirow{2}{*}{}           & \multirow{2}{*}{VOX} & \multirow{2}{*}{PP} & \multirow{2}{*}{Ciudadanos} & \multirow{2}{*}{PSOE} \\
-		                            &                      &                     &                             &                       \\ \midrule
-		\multirow{2}{*}{PP}         & 5.739                &                     &                             &                       \\
-		                            & 0.001                &                     &                             &                       \\
-		\multirow{2}{*}{Ciudadanos} & 4.070                & -1.670              &                             &                       \\
-		                            & 0.024                & 0.736               &                             &                       \\
-		\multirow{2}{*}{PSOE}       & 7.570                & 1.857               & 3.526                       &                       \\
-		                            & 0.000                & 0.548               & 0.007                       &                       \\
-		\multirow{2}{*}{UP}         & 5.146                & -0.593              & 1.077                       & -2.450                \\
-		                            & 0.000                & 0.989               & 0.860                       & 0.046                 \\ \bottomrule
+		                      & VOX      & PP       & Cs      & PSOE    \\ \midrule
+		\multirow{2}{*}{PP}   & -1.23494 &          &         &         \\
+		                      & 0.112    &          &         &         \\
+		\multirow{2}{*}{Cs}   & -4.96556 & -3.73063 &         &         \\
+		                      & 0.000    & 0.000    &         &         \\
+		\multirow{2}{*}{PSOE} & -1.10711 & .127822  & 3.85845 &         \\
+		                      & 0.077    & 0.998    & 0.000   &         \\
+		\multirow{2}{*}{UP}   & .56751   & 1.80245  & 5.53307 & 1.67462 \\
+		                      & 0.696    & 0.000    & 0.000   & 0.000   \\ \bottomrule
 	\end{tabular}
 \end{table}
 
+\begin{figure}[H]
+	\centering
+	\caption{Differences between more and less polarized people feelings towards other parties' voters by party}
+	\includegraphics[width=\textwidth]{Figures/combined_dot_feelingsAP.png}
+	\label{fig:dot-distances}
+\end{figure}
+
+
+\subsection{Wagner replication}
+
+\subsubsection{Affective Polarization Index}
+
+$$
+	\text{Affective Polarization Index}_i = \sqrt{\sum^p_{p=1}\nu_p(\text{like}_{ip}-\overline{\text{like}}_i)^2}
+$$
+
+Where $\nu_p$ is the vote share of each party so I can account for party size. Moreover, the mean affect should itself be weighted by party size, calculated as:
+
+$$
+	\overline{\text{like}}_i = \sum^p_{p=1} (\nu_p * \text{like}_{ip})
+$$
+
+When the difference (distance\footnote{This is a not very important mathematical comment. However, in order to be rigorous, this is not a distance \textit{per se} since it can take negative values. The reason why is because the feelings towards parties can be larger or smaller than the average level of affects. However, the absolute value of that difference actually represents the distance between affects towards a certain party and the average level of affects.}) $\text{like}_{ip}-\overline{\text{like}}_i$ is larger, someone like or dislike this party more than the average. Whereas when this difference is close to zero, the individual does not display intense animosity towards that party. Since this operation is computed for each party in the parliament, the resulting index captures the overall dispersion of affects. The higher this index is, the more polarized an individual is since large distances (either positive or negative) contribute to increase the value of the index.
+
+\textbf{Correlation between API and WAP}:
+
+\begin{figure}[H]
+	\centering
+	\caption{Correlation between API and Wagner's WAP index}
+	\includegraphics[width=\textwidth]{Figures/api_wagner_scatter.png}
+	\label{fig:corr-api-wap}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/groupsHist_wagner.png}
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\caption{\citeposs{Wagner2021} WAP opposition vs incumbent distribution}
+
+	\includegraphics[width=\textwidth]{Figures/AP_index_by_partisanship_wagner.png}
+	\label{fig:WAP_oppo_incumb}
+
+\end{figure}
+
+\begin{figure}[H]
+	\centering
+	\includegraphics[width=\textwidth]{Figures/AP_index_by_party_id_wagner.png}
+\end{figure}
+
+\begin{table}[H]
+	\centering
+	\caption{ANOVA comparisons of Wagner's WAP by party identification}
+	\label{tab:anova-party-wap}
+	\begin{tabular}{@{}lcccc@{}}
+		\toprule
+		                      & VOX      & PP       & Cs      & PSOE    \\ \midrule
+		\multirow{2}{*}{PP}   & -2.91829 &          &         &         \\
+		                      & 0.149    &          &         &         \\
+		\multirow{2}{*}{Cs}   & -8.69244 & -5.77415 &         &         \\
+		                      & 0.000    & 0.000    &         &         \\
+		\multirow{2}{*}{PSOE} & -1.14829 & 1.77     & 7.54415 &         \\
+		                      & 0.834    & 0.435    & 0.000   &         \\
+		\multirow{2}{*}{UP}   & 2.37776  & 5.29605  & 11.0702 & 3.52605 \\
+		                      & 0.182    & 0.000    & 0.000   & 0.000   \\ \bottomrule
+	\end{tabular}
+\end{table}
 \end{document}

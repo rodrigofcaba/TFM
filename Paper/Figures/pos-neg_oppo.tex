@@ -1,0 +1,28 @@
+{
+\def\sym#1{\ifmmode^{#1}\else\(^{#1}\)\fi}
+\begin{tabular}{l*{3}{c}}
+\toprule
+                &\multicolumn{3}{c}{Likelihood of voting for the incumbent}\\\cmidrule(lr){2-4}
+                &\multicolumn{1}{c}{(1)}         &\multicolumn{1}{c}{(2)}         &\multicolumn{1}{c}{(3)}         \\
+\midrule
+Economic assessment (ref.: Worse)&                  &                  &                  \\
+Better          &    3.036\sym{*}  &    2.477         &    2.941\sym{*}  \\
+                &   (2.55)         &   (1.93)         &   (2.39)         \\
+Feelings towards the in-group&    0.822\sym{***}&    0.773\sym{***}&    0.826\sym{***}\\
+                &  (-3.71)         &  (-3.58)         &  (-3.59)         \\
+Feelings towards the out-group&    1.241\sym{***}&    1.242\sym{***}&    1.197\sym{***}\\
+                &   (6.75)         &   (6.62)         &   (4.30)         \\
+Better $\times$ Feelings towards the in-group&                  &    1.148         &                  \\
+                &                  &   (1.05)         &                  \\
+Better $\times$ Feelings towards the out-group&                  &                  &    1.116         \\
+                &                  &                  &   (1.25)         \\
+\midrule
+Pseudo \(R^{2}\)&    0.235         &    0.239         &    0.239         \\
+Observations    &      975         &      975         &      975         \\
+\bottomrule
+\multicolumn{4}{l}{\footnotesize Exponentiated coefficients; \textit{t} statistics in parentheses}\\
+\multicolumn{4}{l}{\footnotesize NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status,}\\
+\multicolumn{4}{l}{\footnotesize education, occupation, income and religious feeling. They are excluded from the table for clarity.}\\
+\multicolumn{4}{l}{\footnotesize \sym{*} \(p<0.05\), \sym{**} \(p<0.01\), \sym{***} \(p<0.001\)}\\
+\end{tabular}
+}
