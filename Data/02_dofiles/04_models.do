@@ -49,7 +49,7 @@ graph export Paper/Figures/margins_wagner.png, replace
 
 esttab using Paper/Figures/new.tex, replace ///
 mgroups("Likelihood of voting for the incumbent", pattern(1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) eqlabel(none) ///
-label sfmt(%9.3g) booktabs nodep nomti nogap pr2 obslast compress noomit nobase refcat(0.spanish_econ_assessment_dummy "Economic assessment (ref.: Better)", nolabel) drop(1.spanish_econ_assessment_dummy 1.spanish_econ_assessment_dummy#c.AP_index 1.spanish_econ_assessment_dummy#c.AP_wagner sex age place_residence marit_status education occupation income religious _cons region) eform addnotes("NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status," "education, occupation, income and religious feeling. They are excluded from the table for clarity.")
+label sfmt(%9.3g) booktabs nodep nomti nogap pr2 obslast compress noomit nobase refcat(0.spanish_econ_assessment_dummy "Economic assessment (ref.: Better)", nolabel) drop(1.spanish_econ_assessment_dummy 1.spanish_econ_assessment_dummy#c.AP_index 1.spanish_econ_assessment_dummy#c.AP_wagner sex age place_residence marit_status education occupation income religious _cons region) eform addnotes("NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status," "education, occupation, income and religious beliefs. They are excluded from the table for clarity reasons.")
 
 
 *********************************************************************************
@@ -94,7 +94,7 @@ gr export Paper/Figures/pos-neg.png, replace
 
 esttab using Paper/Figures/pos-neg.tex, replace ///
 mgroups("Likelihood of voting for the incumbent", pattern(1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) eqlabel(none) ///
-label sfmt(%9.3g) booktabs nodep nomti nogap pr2 obslast compress noomit nobase refcat(2.spanish_econ_assessment_dummy "Economic assessment (ref.: Worse)", nolabel) drop(1.spanish_econ_assessment_dummy 1.spanish_econ_assessment_dummy#c.positive_partisanship 1.spanish_econ_assessment_dummy#c.negative_partisanship sex age place_residence marit_status education occupation income religious _cons region) eform addnotes("NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status," "education, occupation, income and religious feeling. They are excluded from the table for clarity.")
+label sfmt(%9.3g) booktabs nodep nomti nogap pr2 obslast compress noomit nobase refcat(2.spanish_econ_assessment_dummy "Economic assessment (ref.: Worse)", nolabel) drop(1.spanish_econ_assessment_dummy 1.spanish_econ_assessment_dummy#c.positive_partisanship 1.spanish_econ_assessment_dummy#c.negative_partisanship sex age place_residence marit_status education occupation income religious _cons region) eform addnotes("NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status," "education, occupation, income and religious beliefs. They are excluded from the table for clarity reasons.")
 
 
 ********************************************************************************
@@ -143,7 +143,7 @@ graph export Paper/Figures/margins_wagner_oppo.png, replace
 
 esttab using Paper/Figures/opposition.tex, replace ///
 mgroups("Likelihood of voting for the incumbent", pattern(1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) eqlabel(none) ///
-label sfmt(%9.3g) booktabs nodep nomti nogap pr2 obslast compress noomit nobase refcat(2.spanish_econ_assessment_dummy "Economic assessment (ref.: Worse)", nolabel) drop(1.spanish_econ_assessment_dummy 1.spanish_econ_assessment_dummy#c.AP_index 1.spanish_econ_assessment_dummy#c.AP_wagner sex age place_residence marit_status education occupation income religious _cons region) eform addnotes("NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status," "education, occupation, income and religious feeling. They are excluded from the table for clarity.")
+label sfmt(%9.3g) booktabs nodep nomti nogap pr2 obslast compress noomit nobase refcat(2.spanish_econ_assessment_dummy "Economic assessment (ref.: Worse)", nolabel) drop(1.spanish_econ_assessment_dummy 1.spanish_econ_assessment_dummy#c.AP_index 1.spanish_econ_assessment_dummy#c.AP_wagner sex age place_residence marit_status education occupation income religious _cons region) eform addnotes("NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status," "education, occupation, income and religious beliefs. They are excluded from the table for clarity reasons.")
 
 
 
@@ -186,6 +186,6 @@ graph export Paper/Figures/negative_margins_oppo.png, replace
 
 esttab using Paper/Figures/pos-neg_oppo.tex, replace ///
 mgroups("Likelihood of voting for the incumbent", pattern(1 0) prefix(\multicolumn{@span}{c}{) suffix(}) span erepeat(\cmidrule(lr){@span})) eqlabel(none) ///
-label sfmt(%9.3g) booktabs nodep nomti nogap pr2 obslast compress noomit nobase refcat(2.spanish_econ_assessment_dummy "Economic assessment (ref.: Worse)", nolabel) drop(1.spanish_econ_assessment_dummy 1.spanish_econ_assessment_dummy#c.positive_partisanship 1.spanish_econ_assessment_dummy#c.negative_partisanship sex age place_residence marit_status education occupation income religious _cons region) eform addnotes("NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status," "education, occupation, income and religious feeling. They are excluded from the table for clarity.")
+label sfmt(%9.3g) booktabs nodep nomti nogap pr2 obslast compress noomit nobase refcat(2.spanish_econ_assessment_dummy "Economic assessment (ref.: Worse)", nolabel) drop(1.spanish_econ_assessment_dummy 1.spanish_econ_assessment_dummy#c.positive_partisanship 1.spanish_econ_assessment_dummy#c.negative_partisanship sex age place_residence marit_status education occupation income religious _cons region) eform addnotes("NOTE: All the specifications include the following control variables: sex, age, place of residence, marital status," "education, occupation, income and religious beliefs. They are excluded from the table for clarity reasons.")
 
 
